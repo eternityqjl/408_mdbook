@@ -1,0 +1,614 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH05-树与二叉树 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html" class="active"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>重要内容：二叉树遍历、线索二叉树、二叉查找树、平衡二叉树、哈夫曼树和哈夫曼编码</p>
+<h2 id="树的基本概念"><a class="header" href="#树的基本概念">树的基本概念</a></h2>
+<h3 id="定义"><a class="header" href="#定义">定义</a></h3>
+<h3 id="基本术语"><a class="header" href="#基本术语">基本术语</a></h3>
+<ul>
+<li>
+<p>结点的度：树中一个结点的孩子个数</p>
+</li>
+<li>
+<p>树的度：树中结点的最大度数</p>
+</li>
+<li>
+<p>结点的深度、高度、层次：</p>
+<ul>
+<li>层次：从树根开始定义，根结点为第1层，其子结点为第2层</li>
+<li>深度：从根结点开始自顶向下逐层累加</li>
+<li>高度：从叶结点开始自底向上逐层累加</li>
+</ul>
+</li>
+</ul>
+<h3 id="性质"><a class="header" href="#性质">性质</a></h3>
+<h2 id="二叉树的概念"><a class="header" href="#二叉树的概念">二叉树的概念</a></h2>
+<h3 id="定义及主要特性"><a class="header" href="#定义及主要特性">定义及主要特性</a></h3>
+<p><strong>定义</strong></p>
+<p>每个结点至多只有两棵子树（即不存在度大于2的结点），并且二叉树的子树有左右之分，次序不能颠倒。</p>
+<p>二叉树与度为2的有序树的区别：</p>
+<ul>
+<li>度为2的树至少有3个结点，而二叉树可以为空</li>
+<li>度为2的有序树的孩子的左右次序是相对于另一个孩子而言的，如果某个结点只有一个孩子，则这个孩子就无须区分其左右次序；而二叉树无论海子叔是否为2，均需要确定其左右次序。</li>
+</ul>
+<p><strong>几个特殊二叉树</strong></p>
+<ul>
+<li>满二叉树：一颗高度为h，且含有$2^h-1$个结点的二叉树。即树中的每层都含有最多的结点。</li>
+<li>完全二叉树：高度为h，有n个结点的二叉树，当且仅当其每个结点都与高度为h的满二叉树中编号为1-n的结点一一对应时，成为完全二叉树。
+<ul>
+<li>若有度为1的结点，则只可能有一个，且该结点只有左孩子没有右孩子</li>
+</ul>
+</li>
+<li>二叉排序树：左子树上所有结点的关键字均小于根结点的关键字，右子树上的所有结点的关键字均大于根结点的关键字；左右子树又各自是一颗二叉排序树。</li>
+<li>平衡二叉树：树上任一结点的左子树和右子树的深度之差不超过1.</li>
+</ul>
+<p><strong>性质</strong></p>
+<ul>
+<li>非空二叉树上叶子结点数等于度为2的结点数加1</li>
+</ul>
+<h3 id="存储结构"><a class="header" href="#存储结构">存储结构</a></h3>
+<p><strong>顺序存储</strong></p>
+<p>使用一组地址连续的存储单元<strong>自上而下、自左至右</strong>存储完全二叉树上的结点元素，即将完全二叉树上编号为i的结点元素存储在一维数组下标为i-1的分量中。</p>
+<p><strong>完全二叉树和满二叉树</strong>采用顺序存储比较适合，树中结点的序号可以唯一地反映结点之间的逻辑关系，既能节省空间，又能利用数组元素下标值确定结点在二叉树中的位置。</p>
+<p>对于一般二叉树，例如深度较深、结点较少的二叉树，使用顺序存储比较浪费空间，一般采用链式存储。</p>
+<p><strong>链式存储</strong></p>
+<p>用链表结点来存储二叉树中的每个结点。二叉链表一般包括3个域：数据域data、左指针域lchild、右指针域rchild。</p>
+<pre><code class="language-c">typedef struct BiTNode {
+	ElemType data;	//数据域
+	struct BiTNode *lchild, *rchild;	//左右孩子指针
+}BiTNode, *BiTree;
+</code></pre>
+<h2 id="二叉树的遍历和线索二叉树"><a class="header" href="#二叉树的遍历和线索二叉树">二叉树的遍历和线索二叉树</a></h2>
+<h3 id="二叉树的遍历"><a class="header" href="#二叉树的遍历">二叉树的遍历</a></h3>
+<p>二叉树遍历是指按照某条搜索路径<strong>访问树中每个结点</strong>，使得每个结点均被访问一次，而且仅被访问一次。要找到一种规律，使得二叉树上的结点能排列在一个线性队列上，进而便于遍历。</p>
+<p>常见的遍历次序有先序、中序、后序。序指的是<strong>根结点</strong>在何时被访问。</p>
+<p><strong>先序遍历</strong></p>
+<p>若二叉树为空，则什么也不做；否则：</p>
+<ul>
+<li>访问根节点；</li>
+<li>先序遍历左子树；</li>
+<li>先序遍历右子树；</li>
+</ul>
+<pre><code class="language-c">void PreOrder(BiTree T) {
+	if (T != NULL) {
+		visit(T);	//访问根节点
+		PreOrder(T-&gt;lchild);	//递归遍历左子树
+		PreOrder(T-&gt;rchild);	//递归遍历右子树
+	}
+}
+</code></pre>
+<p><strong>中序遍历</strong></p>
+<p>若二叉树为空，则什么也不做；否则：</p>
+<ul>
+<li>中序遍历左子树；</li>
+<li>访问根节点；</li>
+<li>中序遍历右子树；</li>
+</ul>
+<pre><code class="language-c">void InOrder(BiTree T) {
+	if (T != NULL) {
+		InOrder(T-&gt;lchild);	//递归遍历左子树
+		visit(T);	//访问根节点
+		InOrder(T-&gt;rchild);	//递归遍历右子树
+	}
+}
+</code></pre>
+<p><strong>后序遍历</strong></p>
+<p>若二叉树为空，则什么也不做；否则：</p>
+<ul>
+<li>后序遍历左子树；</li>
+<li>后序遍历右子树；</li>
+<li>访问根节点。</li>
+</ul>
+<pre><code class="language-c">void PostOrder(BiTree T) {
+	if (T != NULL)
+    {
+        PostOrder(T-&gt;lchild);	//递归遍历左子树
+        PostOrder(T-&gt;rchild);	//递归遍历右子树
+        visit(T);	//访问根节点
+    }
+}
+</code></pre>
+<p>三种遍历算法中递归遍历左右子树的顺序都是固定的，只是访问根节点的顺序不同。无论采用哪种遍历方法，每个结点都只访问一次，故时间复杂度为O(n)。递归工作栈的深度恰好为树的深度，所以在最坏的情况下二叉树是有n个结点且深度为的单支树，空间复杂度为O(n).</p>
+<p><strong>递归算法和非递归算法的转换</strong></p>
+<p>中序遍历的非递归算法：</p>
+<pre><code class="language-c">void InOrder2(BiTree T) {
+    InitStack(S); BiTree p = T;
+    while (p || !IsEmpty(S)) {	//栈不为空或p不空时循环
+        if(p) {	//一直向左遍历
+            Push(S, p);	//将当前结点入栈
+            p = p-&gt;lchild;	//左孩子不空，一直向左走
+        }
+        else {	//出栈，并转向出栈结点的右子树
+            Pop(S, p); visit(p);	//栈顶元素出栈，访问出栈结点
+            p = p-&gt;rchild;	//向右子树走，p赋值为当前结点的右孩子
+        }	//返回while循环继续进行if-else
+    }
+}
+</code></pre>
+<p>先序遍历的非递归算法：</p>
+<pre><code class="language-c">void PreOrder2(BiTree T) {
+    InitStack(S); BiTree p = T;
+    while (p || !IsEmpty(S)) {	//栈不为空或p不空时循环
+    	if (p) {
+            visit(p); Push(S, p);	//访问当前结点并入栈
+            p = p-&gt;lchild;
+        }
+        else {
+            Pop(S, p);
+            p = p-&gt;rchild;
+        }
+    }
+}
+</code></pre>
+<p>后序遍历要保证左孩子和右孩子都已经被访问并且左孩子在右孩子前访问才能访问根节点。思想为：从根节点开始，将其入栈，然后沿着左子树一直往下搜索，直到搜索到没有左孩子的结点，此时还不能出栈并访问，如果其有右子树，还要按照相同的规则对右子树进行处理，直到上述操作无法进行。栈顶元素想要被出栈访问，要么右子树为空，要么右子树刚被访问完。</p>
+<p><strong>层次遍历</strong></p>
+<p>按照1,2,3,4,...的层次顺序，对二叉树中的各个结点进行访问。</p>
+<p>进行层次遍历需要借助一个<strong>队列</strong>。先将二叉树的根节点入队，然后出队，访问出队结点，若其有左子树，则将左子树根结点入队；若其有右子树，则将右子树根节点入队。然后出队，访问出队结点....以此类推，直到队列为空。</p>
+<pre><code class="language-c">void LevelOrder(BiTree T) {
+    InitQueue(Q);
+    BiTree p;
+    EnQueue(Q, T);	//将根节点入队
+    while (!IsEmpty(Q)) {
+        DeQueue(Q, p);
+        visit(p);
+        if(p-&gt;lchild != NULL)
+            EnQueue(Q, p-&gt;lchild);
+        if(p-&gt;rchild != NULL)
+            EnQueue(Q, p-&gt;rchild);
+    }
+}
+</code></pre>
+<p><strong>由遍历序列构造二叉树</strong></p>
+<ul>
+<li>由二叉树的<strong>先序序列和中序序列</strong>可以唯一地确定一颗二叉树：</li>
+</ul>
+<p>在先序遍历序列中，第一个结点一定是二叉树的<strong>根结点</strong>；中序遍历中，根结点必然将中序序列<strong>分割为两个子序列</strong>，前一个子序列是根结点的左子树的中序序列，后一个子序列是根结点右子树的中序序列。根据这两个子序列，在先序序列中找到对应的左子序列和右子序列；在先序序列中，左子序列的第一个结点是左子树的根结点，右子序列的第一个结点时右子树的根结点。如此递归下去，便能唯一确定一颗二叉树。</p>
+<ul>
+<li>同理，由二叉树的<strong>后序序列和中序序列</strong>也可以唯一地确定一棵二叉树：</li>
+</ul>
+<p>后序序列的最后一个结点就如同先序序列的第一个结点，可以将中序序列分割为两个子序列，然后继续递归。</p>
+<ul>
+<li>只知道先序和后序序列无法确定一棵二叉树。</li>
+</ul>
+<p>见书上的例题。</p>
+<h3 id="线索二叉树"><a class="header" href="#线索二叉树">线索二叉树</a></h3>
+<p><strong>概念</strong></p>
+<p>传统的二叉链表存储仅能体现一种父子关系，不能直接得到结点在遍历中的前驱或后继。这里设想用叶结点或度为1的结点的<strong>空指针</strong>来存放指向其<strong>前驱或后继</strong>的指针。这样就可以像遍历单链表一样方便地遍历二叉树。引入线索二叉树是为了<strong>加快查找结点前驱和后继</strong>的速度。</p>
+<p>规定：若无左子树，令lchild指向其前驱结点；若无右子树，令rchild指向其后继结点。另外还需增加两个编制域标识指针域是指向左(右)孩子还是指向前驱(后继).</p>
+<p>线索二叉树的结点结构：</p>
+<table><thead><tr><th align="center">lchild</th><th align="center">ltag</th><th align="center">data</th><th align="center">rtag</th><th align="center">rchlid</th></tr></thead><tbody>
+</tbody></table>
+<p>标志域的含义：</p>
+<p>ltag：0，lchild域指向结点的左孩子；1，lchild指向结点的前驱</p>
+<p>rtag：0，rchild域指向结点的左孩子；1，rchild指向结点的前驱</p>
+<p>线索二叉树的存储结构描述如下：</p>
+<pre><code class="language-c">typedef struct ThreadNode {
+	ElemType data;	//数据元素
+	struct ThreadNode *lchild, *rchild;	//左右孩子指针
+	int ltag, rtag;		//左右线索标志
+} ThreadNode, *ThreadTree;
+</code></pre>
+<p><strong>中序线索二叉树的构造</strong></p>
+<p>二叉树的线索化是将二叉链表中的空指针改为指向前驱或后继的线索。前驱或后继的信息只有在遍历时才能得到，因此线索化实质上就是遍历一次二叉树。</p>
+<p>中序线索二叉树的建立：附设指针pre指向刚刚访问过的结点，指针p指向正在访问的结点，即pre指向p的前驱。中序遍历的过程中，检查p的左指针是否为空，若为空就将其指向pre；检查pre的右指针是否为空，若为空则将其指向p。</p>
+<pre><code class="language-c">void InThread(ThreadTree &amp;p, ThreadTree &amp;pre) {
+	if (p != NULL) {
+        InThread(p-&gt;lchild, pre);	//递归，线索化左子树
+        if (p-&gt;lchild == NULL) {
+            p-&gt;lchild = pre;
+            p-&gt;ltag = 1;
+        }
+        if (pre != NULL &amp;&amp; pre-&gt;rchild == NULL) {
+            pre-&gt;rchild = p;	//建立前驱结点的后继线索
+            pre-&gt;rtag = 1;
+        }
+        pre = p;
+        InThread(p-&gt;rchild, pre);
+    }//if(p!=NULL)
+}
+</code></pre>
+<p>通过中序遍历建立中序线索二叉树的主过程算法：</p>
+<pre><code class="language-c">void CreatInThread(ThreadTree T) {
+	ThreadTree pre = NULL;
+    if (T != NULL) {	//非空二叉树，线索化
+        InThread(T, pre);	//线索化二叉树
+        pre-&gt;rchild = NULL;	//处理遍历后的最后一个结点
+        pre-&gt;rtag = 1;
+    }
+}
+</code></pre>
+<p>另外为了方便，可以在二叉树的线索链表上添加一个<strong>头结点</strong>Head，令其<strong>lchild域</strong>的指针指向二叉树的<strong>根结点</strong>，其<strong>rchild域</strong>的指针指向中序遍历时访问的<strong>最后一个结点</strong>；令二叉树中序序列中的<strong>第一个结点的lchild域</strong>和<strong>最后一个结点的rchild域</strong>指针均指向<strong>头结点</strong>。这就好比为二叉树建立了一个双线线索链表，方便从前向后或从后向前对线索二叉树进行遍历。</p>
+<p><strong>中序线索二叉树的遍历</strong></p>
+<p>中序线索二叉树隐含了线索二叉树的前驱和后继信息。对其遍历时，只要先找到序列中的第一个结点，然后依次找结点的后继，直至其后继为空。找结点后继的规律为：若其右标志为1，则右链为线索，指示其后继；否则遍历右子树中第一个访问的结点（即右子树中最左下的结点）为其后继。</p>
+<ul>
+<li>求中序线索二叉树中中序序列下的第一个结点：</li>
+</ul>
+<pre><code class="language-c">ThreadNode *Firstnode(ThreadNode *p) {
+	while (p-&gt;ltag == 0)
+        p = p-&gt;lchild;	//最左下结点
+	return p;
+}
+</code></pre>
+<ul>
+<li>求结点p在中序序列下的后继：</li>
+</ul>
+<pre><code class="language-c">ThreadNode *Nextnode(ThreadNode *p) {
+	if (p-&gt;rtag == 0)
+        return Firstnode(p-&gt;rchild);
+	else 
+        return p-&gt;rchild;
+}
+</code></pre>
+<p>利用以上的两个算法，可以得到不含头结点的中序线索二叉树的<strong>中序遍历</strong>的算法：</p>
+<pre><code class="language-c">void Inorder (ThreadNode *T) {
+	for (ThreadNode *p = Firstnode(T); p != NULL; p = Nextnode(p))
+		visit(p);
+}
+</code></pre>
+<p><strong>先序线索二叉树和后序线索二叉树</strong></p>
+<p>建立先序和后序线索二叉树的代码类似于中序线索二叉树，只需变动线索化改造的代码段与调用线索化左右子树递归函数的位置。</p>
+<p>在先序线索二叉树中找结点后继：</p>
+<ul>
+<li>如果有左孩子，则左孩子就是后继；</li>
+<li>如果无左孩子，有右孩子，则右孩子就是其后继；</li>
+<li>如果为叶结点，则右链域直接指示了结点的后继。</li>
+</ul>
+<p>在后序线索二叉树中找结点后继：</p>
+<ul>
+<li>若结点x是根结点，则后继为空；</li>
+<li>若结点x是双亲的右孩子，或是双亲的左孩子且双亲没有右子树，则后继为双亲；</li>
+<li>若结点x是双亲的左孩子且双亲有右子树，则后继为双亲右子树上按后序遍历列出的第一个结点。</li>
+</ul>
+<h2 id="树森林"><a class="header" href="#树森林">树、森林</a></h2>
+<h3 id="树的存储结构"><a class="header" href="#树的存储结构">树的存储结构</a></h3>
+<p>可以采用<strong>顺序或链式</strong>存储结构，必须要反映出树种各个结点之间的逻辑关系。</p>
+<p><strong>双亲表示法</strong></p>
+<p>采用连续空间存储每个结点，同时在每个结点中增设一个伪指针，指示其<strong>双亲结点在数组中的位置</strong>。根节点下标为0，其伪指针域为-1.</p>
+<p>存储结构描述如下：</p>
+<pre><code class="language-c">#define MAX_TREE_SIZE 100	//树中最多结点数
+typedef struct {	//树的结点的定义
+	ElemType data;	//数据元素
+	int parent;	//双亲位置域
+} PTNode;
+typedef struct {	//树类型的定义
+	PTNode nodes[MAX_TREE_SIZE];	//双亲表式
+	int n;	//结点数
+} PTree;
+</code></pre>
+<p>该结构利用了每个结点（除根节点）只有一个双亲的性质，可以很快地得到每个结点的双亲，但是求结点的孩子时需要遍历整个结构。</p>
+<blockquote>
+<p>树的顺序存储结构与二叉树的顺序存储结构有些不同。书的顺序存储中，数组下标代表结点的编号，下表中存储的内容指示了结点之间的关系；二叉树的顺序存储中，数组的下标既代表了结点的编号，又指示了二叉树中各结点之间的关系。</p>
+</blockquote>
+<p><strong>孩子表示法</strong></p>
+<p>这种方法将每个结点的孩子都用单链表链接起来形成一个线性结构，此时n个结点就有n个孩子链表，叶子结点的孩子链表为空。</p>
+<p>这种存储方式<strong>寻找子女</strong>的操作很直接，而寻找双亲需要遍历n个结点中孩子链表指针域指向的n个孩子链表。</p>
+<p><strong>孩子兄弟表示法</strong></p>
+<p>又称<strong>二叉树表示法</strong>，即以二叉链表作为树的存储结构。每个结点包括三部分内容：结点值、指向结点的<strong>第一个孩子</strong>的指针以及指向结点<strong>下一个兄弟结点</strong>的指针。沿此域可以找到结点的所有兄弟结点。</p>
+<p>该方法的存储结构描述如下：</p>
+<pre><code class="language-c">typedef struct CSNode {
+	ElemType data;
+	struct CSNode *firstchild, *nextsibling;
+}CSNode, *CSTree;
+</code></pre>
+<p>此方法的最大优点是可以方便地实现树转换为二叉树的操作，易于查找结点的孩子。</p>
+<h3 id="树森林与二叉树的转换"><a class="header" href="#树森林与二叉树的转换">树、森林与二叉树的转换</a></h3>
+<p>二叉树和树都可以用<strong>二叉链表</strong>作为存储结构，因此以二叉链表作为媒介可以导出树与二叉树的对应关系，即给定一棵树，可以找到<strong>唯一的一个二叉树与之对应</strong>。</p>
+<p>树转换为二叉树的规则：每个结点左指针指向它的<strong>第一个孩子</strong>，右指针指向它在树中<strong>相邻的右兄弟</strong>，这个规则称为<strong>左孩子右兄弟</strong>。</p>
+<p>将森林转换为二叉树的规则与树类似，先将森林中的每一棵树转换为二叉树，由于<strong>任何一棵树</strong>对应的<strong>二叉树的右子树必为空</strong>，若把第二棵树的二叉树视为第一颗二叉树树根的右兄弟，将第三棵树对应的二叉树当作第二课二叉树树根的右兄弟，以此类推，就可以将森林转换为二叉树。</p>
+<h3 id="树和森林的遍历"><a class="header" href="#树和森林的遍历">树和森林的遍历</a></h3>
+<p>用某种方式访问树中的每个结点。</p>
+<ul>
+<li>先根遍历：先访问根结点，再依次遍历根结点的每棵子树，遍历子树时仍然遵循<strong>先根后子树</strong>的规则。其遍历序列与该树对应的二叉树的<strong>先序序列</strong>相同。</li>
+<li>后根遍历：先依次遍历根结点的每棵子树，再访问根结点，遍历子树时仍遵循<strong>先子树后根</strong>的规则。其遍历序列与该树对应的二叉树的<strong>中序序列</strong>相同。</li>
+</ul>
+<p>按照树和森林相互递归的定义，可得到森林的两种遍历方法：</p>
+<ul>
+<li>先序遍历森林：
+<ul>
+<li>访问呢森林中第一棵树的根结点</li>
+<li>先序遍历第一棵树中根结点的子树森林</li>
+<li>先序遍历除去第一棵树之后剩余树构成的森林</li>
+</ul>
+</li>
+<li>中序遍历森林：
+<ul>
+<li>中序遍历森林中第一棵树的根结点的子树森林</li>
+<li>访问第一棵树的根结点</li>
+<li>中序遍历除去第一棵树之后剩余的树构成的森林</li>
+</ul>
+</li>
+</ul>
+<h3 id="树的应用并查集"><a class="header" href="#树的应用并查集">树的应用——并查集</a></h3>
+<h2 id="树与二叉树的应用"><a class="header" href="#树与二叉树的应用">树与二叉树的应用</a></h2>
+<h3 id="二叉排序树bst"><a class="header" href="#二叉排序树bst">二叉排序树（BST）</a></h3>
+<p><strong>定义</strong></p>
+<p>也称<strong>二叉查找树</strong>，是一个具有以下特性的二叉树：</p>
+<ul>
+<li>若左子树非空，则<strong>左子树</strong>上所有结点的值均<strong>小于根结点</strong>；</li>
+<li>若右子树非空，则<strong>右子树</strong>上所有结点的值均<strong>大于根结点</strong>；</li>
+<li>左右子树也分别是一颗二叉排序树</li>
+</ul>
+<p>根据以上定义，左子树结点值&lt;根结点值&lt;右子树结点值，所以可以通过<strong>中序遍历</strong>得到一个<strong>递增的有序序列</strong>。</p>
+<p><strong>二叉排序树的查找</strong></p>
+<p>从根结点开始，沿着某个分支逐层向下比较的过程。若二叉排序树非空，先将给定值与根结点进行比较，若相等则查找成功，若不等，如果小于根节点关键字则在左子树上查找，否则在右子树上查找。这是一个递归的过程。</p>
+<pre><code class="language-c">BSTNode *BST_Search(BiTree T, ElemType key) {
+    while(T != NULL &amp;&amp; key != T-&gt;data) {
+        if(key &lt; T-&gt;data)	T = T-&gt;lchild;
+        else	T = T-&gt;rchild;
+    }
+    return T;
+}
+</code></pre>
+<p><strong>二叉排序树的插入</strong></p>
+<p>二叉排序树作为一种<strong>动态树表</strong>，特点是树的结构不是一次生成的，而是在查找过程中，当树中不存在关键字值等于给定值的结点时再进行插入。</p>
+<p>插入结点过程如下：若原二叉排序树为空，则直接插入；否则，若关键字k小于根结点值，插入到左子树，否则插入到右子树。插入的结点一定是一个<strong>新添加的叶子结点</strong>，且是查找失败时查找路径上访问的<strong>最后一个结点的左孩子或右孩子</strong>。</p>
+<p>算法描述如下：</p>
+<pre><code class="language-c">int BST_Insert(BiTree &amp;T, KeyType k) {
+	if (T == NULL) {
+		T = (BiTree)malloc(sizeof(BSTNode));
+		T-&gt;key = k;
+		T-&gt;lchild = T-&gt;rchild = NULL;
+		return 1;
+	}
+	else if (k == T-&gt;key)
+		return 0;
+	else if (k &lt; T-&gt;key)
+		return BST_Insert(T-&gt;lchild, k);
+	else
+		return BST_Insert(T-&gt;rchild, k);
+}
+</code></pre>
+<p><strong>二叉排序树的构造</strong></p>
+<p>从一颗<strong>空树</strong>出发，依次输入元素，将它们<strong>插入</strong>二叉排序树的合适位置。</p>
+<p>算法描述如下：</p>
+<pre><code class="language-c">void Creat_BST(BiTree &amp;T, KeyType str[], int n) {
+	T = NULL;	//初始化T为空树
+	int i = 0;
+	while (i &lt; n) {
+		BST_Insert(T, str[i]);	//依次将每个关键字插入二叉排序树中
+		i++;
+	}
+}
+</code></pre>
+<p><strong>二叉排序树的删除</strong></p>
+<p>删除操作按照以下3种情况来处理：</p>
+<ul>
+<li>若被删除的结点z是<strong>叶子结点</strong>，则直接删除，不会破坏二叉排序树的性质；</li>
+<li>若结点z<strong>只有一棵左子树或右子树</strong>，则让z的子树成为z父结点的子树，替代z的位置；</li>
+<li>若结点z<strong>有左右两棵子树</strong>，则令z的<strong>直接后继</strong>替代z，然后从二叉排序树中<strong>删去这个直接后继</strong>，这样就转换为了第一或第二种情况。</li>
+</ul>
+<p><strong>查找效率分析</strong></p>
+<p>查找效率主要取决于树的高度。若二叉排序树的左右子树高度之差的绝对值不超过1，则这样的二叉树成为平衡二叉树，其平均查找长度为$O(\log_2n)$。若二叉排序树是一个只有左（右）孩子的单支树，则平均查找长度为$O(n)$。</p>
+<h3 id="平衡二叉树"><a class="header" href="#平衡二叉树">平衡二叉树</a></h3>
+<p><strong>定义</strong></p>
+<p>为了避免树的高度增长过快，降低二叉排序树的性能，规定在插入和删除二叉树的结点时，要保证其任意结点的左右子树<strong>高度差的绝对值不超过1</strong>。</p>
+<ul>
+<li><strong>平衡因子</strong>：结点左子树与右子树的高度差；平衡二叉树的平衡因子只可能是-1，0，1。</li>
+</ul>
+<p><strong>插入</strong></p>
+<p>每当插入或删除一个结点时，首先检查其插入路径上的结点是否因此导致了不平衡。若导致了不平衡，先找到插入路径上离插入结点最近的平衡因子的绝对值大于1的结点A，再对以A为根的子树，在保持二叉排序树的特定的前提下，调整各个结点的位置关系，使之重新达到平衡。</p>
+<p>将调整规律归纳为以下4种情况：</p>
+<ul>
+<li>
+<p>LL平衡旋转（右单旋转）：由于在结点A的左孩子的左子树上插入了新的结点，A的平衡因子由1增至2.</p>
+</li>
+<li>
+<p>RR平衡旋转（左单旋转）：由于在极点A的右孩子的右子树插入了新的结点，A的平衡因子由-1减至-2</p>
+</li>
+<li>
+<p>LR平衡旋转（先左后右双旋转）：</p>
+</li>
+<li>
+<p>RL平衡旋转（先右后左双旋转）：</p>
+</li>
+</ul>
+<p><strong>查找</strong></p>
+<p>在平衡二叉树上进行查找的过程与二叉排序树相同。在查找过程中，与给定值进行比较的关键词个数不超过树的深度。含有n个结点的平衡二叉树的最大深度为$O(\log_2n)$，因此平衡二叉树的平均查找长度为$O(\log_2n)$。</p>
+<h3 id="哈夫曼树和哈夫曼编码"><a class="header" href="#哈夫曼树和哈夫曼编码">哈夫曼树和哈夫曼编码</a></h3>
+<p><strong>定义</strong></p>
+<p>树中的结点被赋予了<strong>权值</strong>；从树的根到任意结点的路径长度与该结点上权值的乘积称为该结点的<strong>带权路径长度</strong>。</p>
+<p>树中所有<strong>叶子结点</strong>的带权路径长度之和称为该树的带权路径长度，记为：
+$$
+WPL=\sum_{i=1}^{n}w_il_i
+$$
+在含有n个带权叶结点的二叉树中，其中<strong>带权路径长度WPL</strong>最小的<strong>二叉树</strong>称为哈夫曼树，也成为最优二叉树。</p>
+<p><strong>哈夫曼树的构造</strong></p>
+<ul>
+<li>将这n个结点分别作为n棵仅含有一个结点的二叉树，构成森林F</li>
+<li>构造一个新结点，从F中选取两棵根结点权值最小的树作为新结点的左右子树，并且将新结点的权值置为左右子树上根结点的权值之和</li>
+<li>从F中删除刚才选出的两棵树，同时将新得到的树加入F中</li>
+<li>重复上两个步骤，直到F中剩余一棵树为止</li>
+</ul>
+<p>从以上构造过程可以看出：</p>
+<ul>
+<li>每个初始结点都成为了叶结点，且权值越小的结点到根结点的路径长度越长</li>
+<li>构造过程共新建了n-1个结点，因此哈夫曼树的结点总数为2n-1</li>
+<li>每次构造都选择2棵树作为新结点的孩子，因此哈夫曼树不存在度为1的结点</li>
+</ul>
+<p><strong>哈夫曼编码</strong></p>
+<p>被广泛应用且非常有效的数据压缩编码。是一种可变长度编码，即允许对不同字符用不等长的二进制位表示，对频率高的字符赋予短编码，对频率低的字符赋予长编码，这样能够压缩数据。</p>
+<ul>
+<li><strong>前缀编码</strong>：没有一个编码是另一个编码的前缀。例如0，101，100就是一组前缀编码。</li>
+</ul>
+<p>哈夫曼编码的过程：</p>
+<ul>
+<li>首先将每个出现的字符当作一个独立的结点，权值为其出现的频度，构造出对应的哈夫曼树</li>
+<li>所有字符结点都出现在叶子结点中</li>
+<li>将字符的编码解释为从根至该字符路径上<strong>边标记</strong>的序列，边标记为0表示转向左孩子，边标记为1表示转向右孩子。</li>
+</ul>
+<p>由此得到的哈夫曼树拥有最优的WPL。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/数据结构/CH04-串.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/数据结构/CH06-图.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/数据结构/CH04-串.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/数据结构/CH06-图.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

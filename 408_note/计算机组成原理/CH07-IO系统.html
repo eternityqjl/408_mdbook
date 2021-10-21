@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH07-IO系统 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html" class="active"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="io系统基本概念"><a class="header" href="#io系统基本概念">I/O系统基本概念</a></h2>
+<h3 id="输入输出系统"><a class="header" href="#输入输出系统">输入/输出系统</a></h3>
+<p>I/O系统中的几个基本概念：</p>
+<ul>
+<li>外部设备</li>
+<li>接口</li>
+<li>输入设备</li>
+<li>输出设备</li>
+<li>外存设备</li>
+</ul>
+<h3 id="io控制方式"><a class="header" href="#io控制方式">I/O控制方式</a></h3>
+<ul>
+<li>程序查询方式</li>
+<li>程序中断方式</li>
+<li>DMA方式</li>
+<li>通道方式</li>
+</ul>
+<h2 id="外部设备"><a class="header" href="#外部设备">外部设备</a></h2>
+<h3 id="输入设备"><a class="header" href="#输入设备">输入设备</a></h3>
+<p>键盘、鼠标</p>
+<h3 id="输出设备"><a class="header" href="#输出设备">输出设备</a></h3>
+<p><strong>显示器</strong></p>
+<p>显示器的主要参数：屏幕大小、分辨率、灰度级、刷新、刷新频率、显示存储器（VRAN）</p>
+<p>显示器的分类：</p>
+<ul>
+<li>阴极射线管CRt显示器</li>
+<li>液晶显示器LCD</li>
+<li>LED发光二极管显示器</li>
+</ul>
+<p><strong>打印机</strong></p>
+<p>针式打印机、喷墨式打印机、激光打印机</p>
+<h3 id="外存储器"><a class="header" href="#外存储器">外存储器</a></h3>
+<p><strong>磁盘存储器</strong></p>
+<p><strong>磁盘阵列RAID</strong></p>
+<p><strong>光盘存储器</strong></p>
+<h2 id="io接口"><a class="header" href="#io接口">I/O接口</a></h2>
+<p>主机和外设之间的交接界面。</p>
+<h3 id="功能"><a class="header" href="#功能">功能</a></h3>
+<ul>
+<li>实现主机和外设的通信联络控制</li>
+<li>进行地址译码和设备选择</li>
+<li>实现数据缓冲</li>
+<li>信号格式的转换</li>
+<li>传送控制命令和状态信息</li>
+</ul>
+<h3 id="结构"><a class="header" href="#结构">结构</a></h3>
+<h3 id="类型"><a class="header" href="#类型">类型</a></h3>
+<p>从不同角度看，I/O接口可以分为不同的类型：</p>
+<ul>
+<li>按数据传送方式可分为并行和串行接口</li>
+<li>按主机访问I/O设备的控制方式可分为程序查询接口、中断接口、DMA接口</li>
+<li>按功能选择的灵活性可分为可编程接口和不可编程接口</li>
+</ul>
+<h3 id="io端口及其编址"><a class="header" href="#io端口及其编址">I/O端口及其编址</a></h3>
+<p>I/O端口指的是接口电路中可以被CPU直接访问的寄存器，主要有数据端口、状态端口和控制端口。通常CPU能对<strong>数据端口</strong>执行<strong>读写</strong>操作，对<strong>状态端口</strong>只执行<strong>读</strong>操作，对<strong>控制端口</strong>只能执行<strong>写</strong>操作。</p>
+<p>I/O端口的编址方式有：</p>
+<ul>
+<li>统一编址：把I/O端口当作存储器的单元进行地址分配。</li>
+<li>独立编址：设置专门的I/O指令来访问I/O端口。</li>
+</ul>
+<h2 id="io方式"><a class="header" href="#io方式">I/O方式</a></h2>
+<p>主机与I/O设备之间的<strong>数据传输</strong>可以采用不同的<strong>控制方式</strong>。常用的有以下三种方式，其中前两种更依赖于CPU中程序指令的执行。</p>
+<h3 id="程序查询方式"><a class="header" href="#程序查询方式">程序查询方式</a></h3>
+<p>信息交换的控制完全由主机执行程序实现，该种方式接口中设置一个数据缓冲寄存器（数据端口）和一个设备状态寄存器（状态端口）。主机进行I/O操作时，先发出询问信号，读取设备状态并根据设备状态决定下一步的操作。</p>
+<p>这种方式下，CPU一旦启动I/O，就必须停止现行程序的运行，并在现行程序中插入一段程序。这种方式下CPU有踏步等待现象。CPU在信息传送过程中要花费很多时间查询和等待，在一段时间内只能和一台外设交换信息，效率大大降低。</p>
+<h3 id="程序中断方式"><a class="header" href="#程序中断方式">程序中断方式</a></h3>
+<p>现代计算机系统有完善的异常和中断处理系统，CPU的数据通路有相应的异常和中断的检测和响应逻辑。外设接口中有中断请求和逻辑控制，操作系统中有响应的中断服务程序。这些硬件和中断服务程序有机结合，共同完成异常和中断的处理过程。</p>
+<p><strong>异常和中断</strong></p>
+<ul>
+<li>异常</li>
+</ul>
+<p>由CPU内部引起的意外事件，分为<strong>硬故障中断</strong>和<strong>程序性异常</strong>。硬故障中断指的是硬连线出现异常引起的，例如电源掉电等；程序性异常指CPU内部因执行异常指令而引起的异常事件。</p>
+<p>按照发生异常的报告和返回方式的不同，内部异常可分为：故障、自陷、终止。</p>
+<p>故障指在引起故障的指令启动后、执行结束前被检测到的异常事件。</p>
+<p>自陷是预先安排的一种异常事件。用于程序调试的断点设置功能就是通过自陷方式实现的。</p>
+<p>终止指的是指令执行过程中发生了使计算机无法继续运行的硬件故障，程序无法继续执行，只能终止，此时调用中断服务程序来重启系统。</p>
+<ul>
+<li>外部中断</li>
+</ul>
+<p>外部中断指的是来自CPU外部、与CPU执行指令无关的时间引起的中断，包括I/O设备发出的I/O中断、外部信号中断，以及各种定时器引起的时钟中断等。外中断在狭义上一般称为中断。</p>
+<p>外部中断和内部异常的不同点：缺页或溢出等异常事件由特定指令在执行过程中产生，而中断不与任何指令相关联，也不阻止任何指令的完成；异常的检测由CPU自身完成，不必通过外部的某个信号通知CPU。对于中断，CPU必须通过总线获取中断源的标志信息，才能知道哪个外部设备发生了何种中断。</p>
+<p><strong>中断的基本概念</strong></p>
+<p>计算机执行现行程序过程中，出现某些急需处理的异常概况，CPU暂时中止先行程序，转去对这些异常进行处理。</p>
+<p><strong>程序中断方式工作流程</strong></p>
+<ul>
+<li>
+<p>中断请求</p>
+</li>
+<li>
+<p>中断判优</p>
+</li>
+<li>
+<p>CPU响应中断的条件</p>
+</li>
+<li>
+<p>中断响应：关中断、保存断点、引出中断服务子程序</p>
+</li>
+<li>
+<p>中断向量</p>
+</li>
+<li>
+<p>中断处理过程</p>
+<ul>
+<li>中断隐指令（硬件自动完成）
+<ul>
+<li>关中断</li>
+<li>保存断点</li>
+<li>引出中断服务程序</li>
+</ul>
+</li>
+<li>中断服务程序
+<ul>
+<li>保存现场和屏蔽字</li>
+<li>开中断（允许更高级中断请求得到响应）</li>
+<li>执行中断服务程序</li>
+<li>关中断（保证在恢复现场和屏蔽字时不被中断）</li>
+<li>恢复现场和屏蔽字</li>
+<li>开中断、中断返回</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>多重中断和中断屏蔽技术</strong></p>
+<p>CPU在执行中断服务程序的过程中，又出现了新的更高优先级的中断请求，CPU暂停现行，转而去处理新的中断请求，称为多重中断。</p>
+<h3 id="dma方式"><a class="header" href="#dma方式">DMA方式</a></h3>
+<p>DMA方式在外设与内存直接开辟了一条直接数据通道，信息传送不再经过CPU，降低了CPU再传送数据时的开销。</p>
+<p>这种方式适用于高速设备大批量数据的传送，硬件开销较大。DMA方式中，中断仅限于故障和正常传送结束时的处理。</p>
+<p><strong>DMA方式的特点</strong></p>
+<p><strong>I/O与主机并行</strong>工作，<strong>程序和传送并行</strong>工作。（中断方式中，I/O与主机并行工作，程序和传送串行工作）</p>
+<p><strong>DMA控制器的组成</strong></p>
+<p>DMA控制器的主要功能：</p>
+<ul>
+<li>接收外设发出的DMA请求，并向CPU发送总线请求</li>
+<li>CPU响应此总线请求，发送总线响应信号，接管总线控制权，进入DMA操作周期</li>
+<li>确定传送数据的主存单元以及长度，并自动修改主存地址计数和传送长度计数</li>
+<li>规定数据在主存和外设间的传送方向，发送读写等控制信号，执行数据传送操作</li>
+<li>向CPU报告DMA操作的结束</li>
+</ul>
+<p><strong>DMA的传送方式</strong></p>
+<p>当I/O设备和CPU同时访问主存时，可能发生冲突，为了有效使用主存，DMA控制器与CPU通常采用以下方式使用主存：</p>
+<ul>
+<li>停止CPU访存</li>
+<li>周期挪用</li>
+<li>DMA与CPU交替访存</li>
+</ul>
+<p><strong>DMA的传送过程</strong></p>
+<ul>
+<li>预处理</li>
+<li>数据传送</li>
+<li>后处理</li>
+</ul>
+<p><strong>DMA方式与中断方式的区别</strong></p>
+<ul>
+<li></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机组成原理/CH06-总线.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/操作系统/0_408操作系统概览.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机组成原理/CH06-总线.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/操作系统/0_408操作系统概览.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

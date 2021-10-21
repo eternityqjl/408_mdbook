@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH04-指令系统 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html" class="active"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="指令格式"><a class="header" href="#指令格式">指令格式</a></h2>
+<h3 id="基本格式"><a class="header" href="#基本格式">基本格式</a></h3>
+<p>一条指令就是机器语言的一个语句，是一组有意义的二进制代码。一条指令通常包括<strong>操作码</strong>字段和<strong>地址码</strong>字段两个部分。</p>
+<p>操作码指出一条指令中该指令应该执行什么性质的操作以及具有何种功能。例如指出时算术加运算还是减运算。</p>
+<p>地址码给出被操作信息的地址。</p>
+<p>指令的长度指的是一条指令中所包含的<strong>二进制代码的位数</strong>。指令长度取决于操作码的长度、操作数地址码的长度以及操作数地址的个数。指令长度与机器字长没有固定关系，通常把指令长度等于机器字长的指令称为<strong>单字长指令</strong>，等于半个机器字长的指令称为<strong>半字长指令</strong>。</p>
+<p>一个指令系统中，如果所有指令的长度都相等，则称为<strong>定长指令字结构</strong>，定字长指令的执行速度快、控制简单。各指令长度随功能而异，称为<strong>变长指令字结构</strong>。</p>
+<p>根据指令中<strong>操作数地址数量</strong>的不同，可以将指令分为：</p>
+<p><strong>零地址指令</strong></p>
+<p>只给出操作码OP，没有显式地址。</p>
+<p><strong>一地址指令</strong></p>
+<p><strong>二地址指令</strong></p>
+<p><strong>三地址指令</strong></p>
+<p><strong>四地址指令</strong></p>
+<h3 id="定长操作码指令格式"><a class="header" href="#定长操作码指令格式">定长操作码指令格式</a></h3>
+<p>在指令字的最高位部分分配固定的若干位（定长）表示操作码。一般n位操作码字段的指令系统最大能表示$2^n$条指令。</p>
+<h3 id="扩展操作码指令格式"><a class="header" href="#扩展操作码指令格式">扩展操作码指令格式</a></h3>
+<p>为了在指令字长有限的前提下保持比较丰富的指令种类，可采取<strong>可变长操作码</strong>，即全部指令的操作码字段<strong>位数不固定</strong>，且分散地放在指令字的不同位置上。</p>
+<p>最常见的变长操作码方法是扩展操作码，它使操作码的长度随地址码的减少而增加，不同地址数的指令有不同长度的操作码。</p>
+<p>注意：</p>
+<ul>
+<li>不允许短码是长码的前缀</li>
+<li>各指令的操作码不能重复</li>
+</ul>
+<p>通常对使用频率较高的指令分配较短的操作码，对使用频率较低的指令分配较长的操作码。</p>
+<h3 id="指令的操作类型"><a class="header" href="#指令的操作类型">指令的操作类型</a></h3>
+<ul>
+<li>数据传送</li>
+<li>算术和逻辑运算</li>
+<li>移位操作</li>
+<li>转移操作</li>
+<li>输入输出操作</li>
+</ul>
+<h2 id="指令的寻址方式"><a class="header" href="#指令的寻址方式">指令的寻址方式</a></h2>
+<p>寻找指令或操作数的有效地址的方式，即确定本条指令的数据地址以及下一条待执行指令的地址的方式。</p>
+<p>寻址方式分为：指令寻址和数据寻址两大类。</p>
+<h3 id="指令寻址和数据寻址"><a class="header" href="#指令寻址和数据寻址">指令寻址和数据寻址</a></h3>
+<h3 id="常见寻址方式"><a class="header" href="#常见寻址方式">常见寻址方式</a></h3>
+<p><strong>隐含寻址</strong></p>
+<p><strong>不明显地给出</strong>操作数的地址，而在指令中隐含操作数的地址。例如单地址的指令格式规定累加器（ACC）作为第二操作数的地址。</p>
+<p>优点：有利于<strong>缩短指令字长</strong>；缺点：需要增加存储器操作数或隐含地址的硬件。</p>
+<p><strong>立即数寻址</strong></p>
+<p>地址字段为<strong>操作数本身</strong>而不是地址，又称为立即数。数据采用补码存放。</p>
+<p>优点：不用访问主存，指令执行时间段；缺点：<strong>A的位数</strong>限制了立即数的<strong>范围</strong>。</p>
+<p><strong>直接寻址</strong></p>
+<p>指令字中的形式地址A为操作数的<strong>真实地址EA</strong>，即EA=A</p>
+<p>优点：简单，指令执行阶段<strong>仅访问一次主存</strong>，不需要专门计算操作数的地址；缺点：<strong>A的位数</strong>决定了该操作数的<strong>寻址范围</strong>。</p>
+<p><strong>间接寻址</strong></p>
+<p>指令地址字段给出的地址不是操作数的真正地址，而是操作数有效地址所在的存储单元的地址，即<strong>操作数地址的地址</strong>。</p>
+<p>间接寻址可以是一次间接寻址，也可以是多次。</p>
+<p>优点：可以<strong>扩大寻址范围</strong>，便于编程（可方便地完成子程序的返回）；缺点：指令在执行阶段要<strong>多次访存</strong>。</p>
+<p><strong>寄存器寻址</strong></p>
+<p>直接给出操作数所在的<strong>寄存器的编号</strong>。</p>
+<p>该寻址方式在指令执行期间<strong>不访问主存</strong>，只访问寄存器，速度较快，但寄存器价格昂贵，计算机中的寄存器个数有限。</p>
+<p><strong>寄存器间接寻址</strong></p>
+<p>寄存器中给出操作数<strong>所在主存单元的地址</strong>。</p>
+<p>与一般间接寻址相比速度更快，但是指令执行阶段需要访问主存。</p>
+<p><strong>相对寻址</strong></p>
+<p>把<strong>程序计数器PC的内容</strong>加上指令格式中的<strong>形式地址A</strong>形成操作数的有效地址。即EA=(PC)+A</p>
+<p>优点：操作数的地址不是固定的，随PC值的变化而变化，且与指令地址之间总相差一个固定值，便于<strong>程序浮动</strong>。广泛用于转移指令。</p>
+<p><strong>基址寻址</strong></p>
+<p>将CPU中<strong>基址寄存器中的内容</strong>加上指令格式中的<strong>形式地址A</strong>形成的操作数的有效地址。即EA=(BR)+A</p>
+<p>基址寄存器是面向<strong>操作系统</strong>的，主要用于为多道程序或数据分配存储空间。基址寄存器的值由操作系统确定，程序执行过程中其值不可以改变，而指令字中的<strong>A可以改变</strong>。</p>
+<p>优点是可以<strong>扩大寻址范围</strong>（基址寄存器的位数大于形式地址A的位数）；用户不必考虑自己的程序存于主存的哪个空间区域，有利于<strong>多道程序设计</strong>。并可用于编制浮动程序，但偏移量的位数较短。</p>
+<p><strong>变址寻址</strong></p>
+<p>有效地址为指令字中的<strong>形式地址A</strong>与<strong>变址寄存器IX中的内容</strong>的和。</p>
+<p>变址寄存器是面向<strong>用户</strong>的。变址寄存器中的内容可以由用户改变，并且程序执行过程中其值可以改变，而指令字中的<strong>A不可以该变</strong>。</p>
+<p>变址寻址的优点是可扩大寻址范围；在<strong>数组</strong>处理过程中可以设定A为数组首地址，不断改变变址寄存器IX的内容，可以容易地形成数据中任意数据的地址，适合编制循环程序。偏移量的位数足以表示整个存储空间。</p>
+<p><strong>堆栈寻址</strong></p>
+<p>堆栈是存储器中一块特定的、按LIFO后进先出原则管理的存储区，该存储区中读写地址是使用<strong>堆栈指针SP</strong>寄存器给出的。</p>
+<p>堆栈可分为硬堆栈和软堆栈。</p>
+<p>栈指针指向栈顶的空单元。</p>
+<h3 id="x86汇编指令入门"><a class="header" href="#x86汇编指令入门">X86汇编指令入门</a></h3>
+<p><strong>相关寄存器</strong></p>
+<p>8个32位通用寄存器，除了堆栈基指针EBP和堆栈顶指针ESP外其他几个寄存器的用途是比较任意的。</p>
+<p><strong>寻址模式和内存分配</strong></p>
+<p><strong>常用指令</strong></p>
+<p>汇编指令可分为数据传送指令、逻辑计算指令和控制流指令。</p>
+<ul>
+<li>数据传送指令
+<ul>
+<li>mov</li>
+<li>push</li>
+<li>pop</li>
+</ul>
+</li>
+<li>算术和逻辑运算指令
+<ul>
+<li>add/sub</li>
+<li>inc/dec</li>
+<li>imul</li>
+<li>idiv</li>
+<li>and/or/xor</li>
+<li>not</li>
+<li>neg</li>
+<li>shl/shr</li>
+</ul>
+</li>
+<li>控制流指令
+<ul>
+<li>jmp</li>
+<li>j(condition)
+<ul>
+<li>je</li>
+<li>jne</li>
+<li>jz</li>
+<li>...</li>
+</ul>
+</li>
+<li>cmp</li>
+<li>call/ret：分别实现了子程序（过程、函数等）的调用以及返回。</li>
+</ul>
+</li>
+</ul>
+<h2 id="cisc和risc"><a class="header" href="#cisc和risc">CISC和RISC</a></h2>
+<p>复杂指令系统计算机(CISC)：增强原有指令功能，设置更为复杂的新指令，实现软件功能的硬件化。例如X86架构计算机。</p>
+<p>精简指令系统计算机(RISC)：减少指令种类，简化指令功能，提高指令的执行速度。例如ARM、MIPS架构的计算机。</p>
+<h3 id="cisc"><a class="header" href="#cisc">CISC</a></h3>
+<p>VLSI技术。</p>
+<h3 id="risc"><a class="header" href="#risc">RISC</a></h3>
+<p>精简指令系统计算机。要求指令系统简化，尽量使用寄存器-寄存器操作指令，指令格式力求一致。</p>
+<p>主要特点：</p>
+<p>见书。</p>
+<h3 id="二者的比较"><a class="header" href="#二者的比较">二者的比较</a></h3>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机组成原理/CH03-存储器.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/计算机组成原理/CH05-中央处理器.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机组成原理/CH03-存储器.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/计算机组成原理/CH05-中央处理器.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

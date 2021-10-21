@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH03-存储器 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html" class="active"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="存储器概述"><a class="header" href="#存储器概述">存储器概述</a></h2>
+<h3 id="分类"><a class="header" href="#分类">分类</a></h3>
+<p><strong>按层次分</strong></p>
+<ul>
+<li>主存储器：内存，CPU可直接随机对其访问</li>
+<li>辅助存储器：外存，是主存储器的后援存储器，用来存放当前暂时不用的程序和数据，以及需要永久保存的数据</li>
+<li>高速缓冲存储器：位于主存和CPU之间，用来存放正在执行的程序段和数据，存取速度可与CPU的速度匹配</li>
+</ul>
+<p><strong>按存取方式</strong></p>
+<ul>
+<li>随机存储器(RAM)：又分为SRAM和DRAM</li>
+<li>只读存储器(ROM)：断电保留内容，随机读写特性，但写入比读取慢得多。</li>
+<li>串行访问存储器：对存储单元进行读写操作时，需要按其物理位置的先后顺序寻址。(磁带)</li>
+</ul>
+<p><strong>按信息的可保存性分</strong></p>
+<p>易失性：断电后存储信息消失。</p>
+<p>非易失性：断电后信息仍然保持。</p>
+<h3 id="性能指标"><a class="header" href="#性能指标">性能指标</a></h3>
+<p><strong>存储容量</strong></p>
+<p>=存储字数*字长；存储字数表示存储器<strong>地址空间的大小</strong>，字长表示<strong>一次存取操作的数据量</strong>。</p>
+<p><strong>单位成本</strong></p>
+<p>每位价格=总成本/总容量</p>
+<p><strong>存储速度</strong></p>
+<ul>
+<li>存取时间：从启动一次存储器操作到完成该操作所经历的时间</li>
+<li>存取周期：存储器进行一次完整的读写操作所需要的全部时间</li>
+<li>主存带宽：又称数据传输率，每秒从主存进出信息的最大数量</li>
+</ul>
+<p>存取时间不等于存储周期，通常<strong>存取周期大于存取时间</strong>，因为对于任何一种存储器，读写操作后总要有一段<strong>恢复内部状态的复原时间</strong>。</p>
+<h2 id="存储器的层次化结构"><a class="header" href="#存储器的层次化结构">存储器的层次化结构</a></h2>
+<p>多级存储系统，用来解决存储器大容量、高速度和低成本3个相互制约的矛盾。</p>
+<ul>
+<li>
+<p>Cache-主存：解决CPU和主存速度不匹配的问题</p>
+</li>
+<li>
+<p>主存-辅存：解决存储系统的容量问题</p>
+</li>
+</ul>
+<p>辅存要通过主存和CPU交换信息，主存与CPU、Cache、辅存都能交换信息。</p>
+<p>主存和Cache之间的数据调动是由硬件自动完成的，对<strong>所有程序员</strong>都透明；主存和辅存之间（虚拟内存管理）的数据调动是由<strong>硬件和操作系统</strong>共同完成的，对<strong>应用程序员</strong>透明。</p>
+<h2 id="半导体随机存储器"><a class="header" href="#半导体随机存储器">半导体随机存储器</a></h2>
+<p>主存由DRAM实现，Cache由SRAM实现，都属于易失性存储器。</p>
+<h3 id="sram和dram"><a class="header" href="#sram和dram">SRAM和DRAM</a></h3>
+<p><strong>SRAM</strong></p>
+<p>把存放一个二进制位的物理器件称为<strong>存储元</strong>，是存储器最基本的构件。地址码相同的多个存储元构成一个<strong>存储单元</strong>。若干存储单元的集合构成<strong>存储体</strong>。</p>
+<p>SRAM用双稳态触发器（6个晶体管）来记忆信息，是非破坏性读取。</p>
+<p>SRAM存储速度快，但集成度低，功耗较大，一般用来作高速缓存。</p>
+<p><strong>DRAM</strong></p>
+<p>利用存储元电路中栅极电容上的电荷来存储信息，只使用一个晶体管，比SRAM密度高很多。</p>
+<p>DRAM采用<strong>地址复用技术</strong>，地址线是原来的1/2，地址信号分行、列两次传送。</p>
+<p>DRAM相对于SRAM来说容易集成、价位低、容量大，但存取速度慢。</p>
+<p>DRAM电容上的电荷一般只能维持1-2ms，即使电源不断电，信息也会自动消失。为此必须每隔一定时间刷新，时间一般设为<strong>2ms</strong>，称为<strong>刷新周期</strong>，常用刷新方式有：</p>
+<ul>
+<li><strong>集中</strong>刷新：在一个刷新周期内<strong>取一段固定时间</strong>依次对存储器的所有行进行逐一再生，在此期间停止对存储器的读写操作，称为<strong>死时间</strong>，又称访存死区。优点是读写操作不受刷新影响，缺点是在集中刷新期间不能进行读写操作。</li>
+<li><strong>分散</strong>刷新：把对每行的刷新<strong>分散到各个工作周期</strong>中；由此一个存储器的系统工作周期分为两部分：前半部分用于正常读写或保持；后半部分用于刷新。这种方式增加了系统的存取周期，降低了整机速度，优点是<strong>没有死区</strong>。</li>
+<li><strong>异步</strong>刷新：是前两种方法的结合，既能缩短死时间，又能充分利用最大刷新间隔为2ms的特点。将刷新周期除以行数，得到两次刷新操作之间的时间间隔t，利用逻辑电路每隔时间t产生一次刷新请求，这样可以避免使CPU连续等待过长时间，并且减少刷新次数。</li>
+</ul>
+<p>刷新对CPU是透明的，不依赖于外部的访问；DRAM刷新的是行，由芯片内部自行生成行地址。刷新时不需要片选，即存储整个器中的所有芯片同时被刷新。</p>
+<p><strong>存储芯片内部的结构</strong></p>
+<ul>
+<li>存储体（存储矩阵）：是存储单元的集合，由行选择线（X）和列选择线（Y） 来选择所访问单元。存储体相同行、列上的单元同时被读出或写入。</li>
+<li>地址译码器</li>
+<li>I/O控制电路</li>
+<li>片选控制信号</li>
+<li>读/写控制信号</li>
+</ul>
+<h3 id="只读存储器rom"><a class="header" href="#只读存储器rom">只读存储器ROM</a></h3>
+<p>类型：掩膜式、一次可编程只读、可擦除可编程只读、闪存、固态硬盘。</p>
+<h3 id="主存储器的基本组成"><a class="header" href="#主存储器的基本组成">主存储器的基本组成</a></h3>
+<p>一个个存储0或1的记忆单元构成的存储矩阵是存储器的核心部分。为了存取存储体中的信息，必须对存储单元进行<strong>编址</strong>，现代计算机通常采用<strong>字节编址</strong>方式，此时存储体内的一个地址中有1个字节。</p>
+<p>指令执行过程需要访问主存时，CPU首先把访问单元的<strong>地址</strong>送到MAR中，然后通过地址线将主存地址送到主存中的地址寄存器，以便地址译码器进行译码选中相应的单元，同时CPU将<strong>读写控制信号</strong>通过控制线送到主存的读写控制电路。如果是写操作，CPU同时将要写的信息送入MDR中，在读写控制电路的作用下，经数据线将信号写入写中的单元；如果是读操作，那么主存读出选中的单元的内容送到数据线，然后送到MDR中。</p>
+<p>数据线的宽度与MDR的宽度相同，地址线的宽度与MAR的相同。64位数据线按照字节编址的方式下，最多可以存取8个单元（8字节，字节编址下每个单元1B）的内容。<strong>地址线的位数</strong>决定了主存地址空间的<strong>最大可寻址范围</strong>。</p>
+<p>数据线数和地址线数共同反映了存储体容量的大小。</p>
+<h2 id="主存储器与cpu的连接"><a class="header" href="#主存储器与cpu的连接">主存储器与CPU的连接</a></h2>
+<h3 id="连接原理"><a class="header" href="#连接原理">连接原理</a></h3>
+<ul>
+<li>主存通过<strong>数据总线、地址总线和控制总线</strong>与CPU相连</li>
+<li>数据总线的位数与工作频率的乘积正比于数据传输率</li>
+<li>地址总线的位数取决于可寻址的最大内存空间</li>
+<li>控制总线（读/写）指出本次总线周期的类型以及本次输入/输出操作完成的时刻</li>
+</ul>
+<h3 id="主存容量的扩展"><a class="header" href="#主存容量的扩展">主存容量的扩展</a></h3>
+<p><strong>位扩展法</strong></p>
+<p>对<strong>字长</strong>进行补充，即增加存储单元的字长，使得<strong>数据位数</strong>与CPU的数据线数相等。</p>
+<p>仅仅采用位扩展时，各芯片连接地址线的方式相同，但<strong>连接数据线的方式不同</strong>，片选信号要连到所有芯片。</p>
+<p>eg：利用8片8K*1位的RAM芯片组成8K*8位的存储器。</p>
+<p><strong>字扩展法</strong></p>
+<p>增加存储器中<strong>存储单元(字)<strong>的数量，位数不变。字扩展将芯片的地址线、数据线、读写控制线相并联，由片选信号区分各芯片的地址范围。相当于</strong>增加地址线的数量</strong>。</p>
+<p>仅采用字扩展时，各芯片连接地址线的方式相同，连接数据线的方式也相同，但某个时刻只需要<strong>选中部分芯片</strong>，所以通过<strong>片选</strong>芯片或采用<strong>译码器</strong>设计连接到相应的芯片。</p>
+<p>eg：用4片16K*8位的RAM芯片组成64K*8位的存储器。</p>
+<p><strong>字位同时扩展</strong></p>
+<p>既改变字长，又改变地址数。</p>
+<h3 id="存储芯片的地址分配和片选"><a class="header" href="#存储芯片的地址分配和片选">存储芯片的地址分配和片选</a></h3>
+<p>CPU实现<strong>对存储单元的访问</strong>，首先要选择存储芯片，即进行<strong>片选</strong>，然后为选中的芯片依地址码选择相应的存储单元，进行数据的存储，即进行<strong>字选</strong>。片内的字选通常由CPU送出的N条<strong>低地址线</strong>完成，地址线直接接到所有存储芯片的地址输入端。</p>
+<p>片选和字选都相当于通过地址线进行选择。</p>
+<p>片选信号的产生分为线选法和译码片选法。</p>
+<p><strong>线选法</strong></p>
+<p>用除了片内寻址外的<strong>高位地址</strong>线直接分别连接到各个存储芯片的<strong>片选端</strong>，当某地址线信息为0时，选中与之对应的存储芯片。片选地址线每次寻址时只能有一位有效，不允许同时多位有效。（例如0号芯片地址为1110，1号芯片地址为1101，2号芯片地址为1011，3号芯片地址为0111）</p>
+<p>缺点：地址空间不连续，不能充分利用系统的存储器空间，造成地址资源的浪费。</p>
+<p><strong>译码片选法</strong></p>
+<p>用除片内寻址外的高位地址线通过<strong>地址译码器</strong>芯片产生片选信号。</p>
+<h2 id="双端口ram和多模块存储器"><a class="header" href="#双端口ram和多模块存储器">双端口RAM和多模块存储器</a></h2>
+<p>为了提高CPU访问存储器的速度，使用双端口存储器、多模块存储器等技术。</p>
+<h3 id="双端口ram"><a class="header" href="#双端口ram">双端口RAM</a></h3>
+<p>双通道内存。</p>
+<p>一个存储器有左右两个独立的端口，分别具有<strong>两组相互独立的地址线、数据线和读写控制线</strong>。允许两个独立的控制器<strong>同时异步地</strong>访问存储单元。</p>
+<p>当两个端口的<strong>地址不相同时</strong>，在两个端口上进行读写操作一定不会发生冲突。</p>
+<p>两个端口同时存取存储器的<strong>同一地址单元</strong>时，会因数据冲突造成数据存储或读取错误。共有以下4中情况：</p>
+<ul>
+<li>两个端口<strong>不同时</strong>对同一地址单元<strong>读写</strong>数据</li>
+<li>两个端口<strong>同时</strong>对同一地址单元<strong>读取</strong>数据</li>
+<li>两个端口<strong>同时</strong>对同一地址单元<strong>写入</strong>数据</li>
+<li>两个端口<strong>同时</strong>对同一地址单元操作，<strong>一个写入数据，一个读取数据</strong></li>
+</ul>
+<p>前两种不会出现错误，第三种出现写入错误，第四种出现读写错误。</p>
+<p>解决方法：置忙信号BUSY位0，由判断逻辑决定<strong>暂时关闭一个端口</strong>，未被关闭的端口正常访问，被关闭的端口延长一个很短的时间后再访问。</p>
+<h3 id="多模块存储器"><a class="header" href="#多模块存储器">多模块存储器</a></h3>
+<p>常用的有单体多字存储器和多体低位交叉存储器。</p>
+<p><strong>单体多字存储器</strong></p>
+<p>只有一个存储器，每个存储单元存储m个字，总线宽度也为m个字。一次并行读出m个字，地址必须顺序排列并处于同一存储单元。</p>
+<p>该系统在一个存取周期内，从同一地址取出m条指令，然后将指令逐条送至CPU执行，即每个1/m存取周期，CPU向主存取一条指令，这增大了存储器的带宽，提高了工作速度。</p>
+<p>缺点：指令和数据必须在内存中连续存放，遇到转移指令，这种方法的效果就不明显了。</p>
+<p><strong>多体并行存储器</strong></p>
+<p>由多体模块组成，每个模块都有相同的容量和读取速度，每个模块都有相同的容量和读取速度，各模块都有独立的读写控制电路、地址寄存器和数据寄存器。它们既能并行工作，又能交叉工作。</p>
+<p>多体并行存储器分为高位交叉编址（顺序方式）和低位交叉编址（交叉方式）两种：</p>
+<ul>
+<li>高位交叉编址：高位地址表示<strong>体号</strong>，低位地址为<strong>体内地址</strong>。该方式下总是把低位的体内地址送到由高位体号确定的模块内进行译码。CPU总是按顺序访问存储模块，存储模块不能被并行访问，不能提高存储器的吞吐率。</li>
+<li>低位交叉编址：低位地址为<strong>体号</strong>，高位地址为<strong>体内地址</strong>。每个模块按照<strong>模m交叉编址</strong>，模块号=单元地址%m，假定有m个模块，每个模块有k个单元，则0,m,...,(k-1)m单元位于$M_0$；第1,m+1,...,(k-1)m+1单元位于$M_1$，以此类推。该编址方式下，总把高位的体内地址送到由低位体号确定的模块内进行译码，程序<strong>连续存放在相邻模块</strong>。采用这种编址方式，可以在不改变每个模块存取周期的前提下，采用流水线方式并行存取，提高存储器带宽。</li>
+</ul>
+<h2 id="高速缓冲存储器"><a class="header" href="#高速缓冲存储器">高速缓冲存储器</a></h2>
+<p>采用存储体系，通常将存储系统分为“Cache-主存”层次和“主存-辅存”层次。</p>
+<h3 id="程序访问的局部性原理"><a class="header" href="#程序访问的局部性原理">程序访问的局部性原理</a></h3>
+<p>包括<strong>时间局部性</strong>和<strong>空间局部性</strong>。时间局部性指的是最近的未来要用到的信息，很可能是<strong>现在正在使用</strong>的信息，因为程序中存在<strong>循环</strong>。空间局部性是最近的未来要用到的信息，很可能与现在正在使用的信息<strong>在存储空间上是临近</strong>的，因为指令通常是<strong>顺序存放、顺序执行</strong>的，数据一般也以向量、数组等形式存储在一起。</p>
+<p>高速缓冲技术利用程序访问的局部性原理，把程序中正在使用的部分存放在一个高速的、容量较小的Cache中，使CPU的访存操作大多针对Cache进行，从而大大提高程序的执行速度。</p>
+<h3 id="cache的基本工作原理"><a class="header" href="#cache的基本工作原理">Cache的基本工作原理</a></h3>
+<p>为了便于Cache和主存的信息交换，<strong>Cache和主存</strong>都被划分为<strong>相等的块</strong>，Cache块又称为<strong>Cache行</strong>，每块由若干字节组成，块的长度称为<strong>块长</strong>(<strong>Cache行长</strong>)。由于Cache的容量远小于主存容量，所以Cache中的块数要远少于主存中的块数，仅保留主存中最活的若干块的副本。</p>
+<p>CPU与Cache（或主存）之间的数据交换以<strong>字</strong>为单位，而Cache与主存之间的数据交换以<strong>Cache块</strong>为单位。</p>
+<p>CPU欲访问的信息已在Cache中的比率称为Cache的命中率。设一个程序执行期间，Cache的总命中次数为$N_c$，访问主存的总次数为$N_m$，则命中率$H$为：
+$$
+H=N_c/(N_c+N_m)
+$$
+命中率越接近于1越好。</p>
+<h3 id="cache和主存的映射方式"><a class="header" href="#cache和主存的映射方式">Cache和主存的映射方式</a></h3>
+<p>Cache行中的信息是主存中某个块的副本，地址映射是指把主存地址空间映射到Cache地址空间，即把存放的主存中的信息按照某种规则装入Cache。</p>
+<p>Cache中的行数比主存块数少得多，主存中只有一部分块的信息可以放在Cache中，因此在Cache中要为每块加一个<strong>标记</strong>，指明其是主存中哪一个块的副本。该标记的内容相当于<strong>主存块的编号</strong>。另外为了说明Cahce行中的<strong>信息是否有效</strong>，每个Cache行需要一个<strong>有效位</strong>。</p>
+<p><strong>直接映射</strong></p>
+<p><strong>主存中的每一块</strong>只能装入Cache中的<strong>唯一位置</strong>。若该位置已有内容，则产生块冲突，原来的块将无条件地被替换出去。这种实现方式较为简单，但不够灵活，即使Cache中的其他许多地址空着也不能占用，这使得直接映射的块<strong>冲突概率最高，空间利用率低</strong>。</p>
+<p>直接映射关系可以定义为（取余运算）：
+$$
+j=i \ \text{mod} \ 2^c
+$$
+$j$是Cache的行号，$i$是主存的块号，$2^c$是Cache的总块数；这种映射方式中，主存中的第$0$、$2^c$、$2^{c+1}$....块只能映射到Cache的第0行；主存的第$1$、$2^c+1$、$2^{c+1}+1$....块只能映射到Cache的第1行，以此类推。</p>
+<p>从这个定义可以得出，主存块号的<strong>低c位</strong>，正好是其要装入的<strong>Cache行号</strong>。给每个Cache行设置一个长为$t=m-c$（m为地址长度）的<strong>标记</strong>，当主存某块调入Cache后，就将其<strong>块号的高t位</strong>设置在对应Cache行的标记中。</p>
+<p>CPU访存过程：首先根据访存地址中的<strong>低c位</strong>找到对应的Cache行，将对应Cache行中的<strong>标记</strong>和主存地址的<strong>高t位进行比较</strong>，若相等且有效位为1，则<strong>命中</strong>，此时根据主存中<strong>低位的块内地址</strong>，在对应的Cache行中存取信息；若未命中或有效位为0，则CPU从主存中读取出该地址所在的一块信息送到对应的Cache行中，将有效位置1，并将标记设置为地址中的高t位，同时将内容送入CPU。</p>
+<p><strong>全相联映射</strong></p>
+<p>主存中的每一块可以装入Cache中的任何位置，<strong>每行的标记</strong>用于指出该行取自<strong>主存的哪一块</strong>，所以CPU访存时需要与所有Cache的行进行比较。</p>
+<p>这种方式的优点是比较灵活，Cache块的冲突概率低，空间利用率高，命中率也高；缺点是<strong>标记的比较速度较慢，实现成本较高</strong>。</p>
+<p><strong>组相联映射</strong></p>
+<p>将Cache空间分为大小相同的组，主存的一个数据块可以装入组内任何一个位置，相当于在<strong>组间采用直接映射</strong>，而<strong>组内采用全相联映射</strong>。</p>
+<p>假设<strong>每个组有r个Cache行</strong>，则称之为<strong>r路</strong>组相联。</p>
+<p>组相联映射关系可以定义为：
+$$
+j= i \ \text{mod} \ Q
+$$
+$j$是Cache行的组号，$i$是主存的块号，$Q$是Cache的组数。</p>
+<p>路数越大，即每组Cache行的数量越大，发生块冲突的概率越低，但相联比较电路也越复杂。选定适当的适量，可以使组相联映射的成本接近直接映射，而性能上接近全相联映射。</p>
+<p>组相联映射的地址结构为：</p>
+<p><strong>标记、组号、块内地址</strong></p>
+<p>CPU访存过程：首先根据访存地址中的组号找到对应的Cache组；将Cache组中每个行的标记与主存地址的高位标记进行比较，若有一个相等且有效位为1，则访问Cache命中，此时根据主存地址中的块内地址，在对应Cache中存取信息；若都不相等或虽然相等但有效位为0，则不命中，此时CPU从主存中读出该地址所在的信息块并送到Cache对应组的任意一个空闲行，将有效位置1，并设置标记，同时将该地址中的内容送入CPU。</p>
+<h3 id="cache中主存块的替换算法"><a class="header" href="#cache中主存块的替换算法">Cache中主存块的替换算法</a></h3>
+<p>采用<strong>全相联和组相联</strong>映射方式时，从主存向Cache传送一个新块，当Cache或Cache组中的<strong>空间已被占满</strong>时，需要使用替换算法置换Cache行。采用直接映射时，一个给定主存块只能放到唯一的Cache行，当对应Cache行已经有一个主存块存在时，新的主存块会直接把存在的主存块替换掉，无须使用替换算法。</p>
+<p><strong>随机算法(RAND)</strong></p>
+<p>随机地确定替换的Cache块。实现比较简单，未依据程序访问的局部性原理，命中率较低。</p>
+<p><strong>先进先出算法(FIFO)</strong></p>
+<p>选择最早调入的行进行替换。比较容易实现，也未依据程序访问的局部性原理，因为最早进入的主存块可能也是目前经常要使用的。</p>
+<p><strong>近期最少使用算法(LRU)</strong></p>
+<p>依据程序访问的局部性原理，选择近期内长久未访问过的Cache行作为替换的行，平均命中率比FIFO高。</p>
+<p>LRU算法为每个Cache行设置一个<strong>计数器</strong>，用计数值来记录主存块的使用情况，并根据计数值选择淘汰某个行，计数值的位数与Cache组大小有关，2路时有1位LRU位，4路时有2位LRU位。</p>
+<p>计数器的变化规则：</p>
+<ul>
+<li>命中时，所命中行的计数器清零，比其低的计数器加1，其余不变；</li>
+<li>未命中且有空闲行时，新装入的行的计数器置0，其余全加1；</li>
+<li>未命中且无空闲行时，计数值为3的行的信息块被淘汰，新装入的行的计数器置0，其余全加1.</li>
+</ul>
+<p>当集中访问的存储区超过Cache组大小时，命中率可能变得很低。</p>
+<p><strong>最不经常使用算法(LFU)</strong></p>
+<p>将一段时间内被访问次数最少的存储行换出，也需要每行设置一个计数器。</p>
+<h3 id="cache写策略"><a class="header" href="#cache写策略">Cache写策略</a></h3>
+<p>当对Cache中的内容进行<strong>更新</strong>时，就需选用写操作策略使得<strong>Cache内容和主存内容保持一致</strong>。分两种情况：Cache写命中和Cache写不命中。</p>
+<p><strong>Cache写命中</strong></p>
+<p>写命中时有两种处理方法：</p>
+<ul>
+<li><strong>全写法</strong>：CPU对Cache写命中时，把数据<strong>同时写入Cache和主存</strong>。当某一块需要替换时，不必把这一块写回主存，用新调入的块直接覆盖即可。这种方法实现简单，能随时保存主存数据的正确性，缺点是增加了访问次数，降低了Cache效率。
+<ul>
+<li>写缓冲（Write Buffer）：为了减少全写法写入主存时的时间损耗，在Cache和主存之间添加的一个FIFO缓冲队列，可以解决速度不匹配的问题，但若频繁写时，会出现缓冲饱和溢出。</li>
+</ul>
+</li>
+<li><strong>写回法</strong>：CPU对Cache写命中时，<strong>只修改Cache的内容，不立即写入主存</strong>，只有当此块<strong>被换出时</strong>才写回主存。这种方法减少了访存次数，但存在<strong>不一致的隐患</strong>。采用这种方法时每个Cache行要设置一个<strong>标志位（脏位）</strong>，反映此块是否被CPU修改过。</li>
+</ul>
+<p><strong>Cache写不命中</strong></p>
+<p>也有两种处理方法：</p>
+<ul>
+<li><strong>写分配法</strong>：加载主存中的块到Cache中，然后更新这个Cache块，试图利用程序的空间局部性，但缺点是每次不命中都需要从主存中读取一块。</li>
+<li><strong>非写分配法</strong>：<strong>只写入主存，不进行调块</strong>。
+<ul>
+<li>这种方法通常与全写法合用；写分配法通常与写回法合用。</li>
+<li>现代计算机通常设立<strong>多级Cache</strong>，一般为L1、L2、L3三级，依次离CPU从近到远，访问速度越来越慢，容量越大。</li>
+<li>指令Cache与数据Cache分离一般在L1 Cache，此时通常使用<strong>写分配法与写回法合用</strong>。</li>
+<li>一个两级Cache系统中，L1 Cache对L2 Cache使用<strong>全写法</strong>，L2 Cache对主存使用<strong>写回法</strong>；L2 Cache的存在避免了频繁写造成的写缓冲饱和溢出。</li>
+</ul>
+</li>
+</ul>
+<h2 id="虚拟存储器"><a class="header" href="#虚拟存储器">虚拟存储器</a></h2>
+<p>主存和辅存共同构成了虚拟存储器。对于应用程序员来说，虚拟存储器是透明的。虚拟存储器具有<strong>主存的速度和辅存的容量</strong>。</p>
+<h3 id="基本概念"><a class="header" href="#基本概念">基本概念</a></h3>
+<p>虚拟存储器将主存或辅存的地址空间同一编址，形成一个庞大的地址空间，在该空间内用户可以自由编程，不必在乎之际的主存容量和程序在主存中存放的位置。</p>
+<p>用户编程允许设计的地址称为虚地址或<strong>逻辑地址</strong>，虚地址对应的空间称为虚拟空间；实际主存单元的地址称为实地址。虚地址比实地址大得多。</p>
+<p>CPU使用虚地址时，由辅助硬件找出虚地址和实地址之间的对应关系，并判断这个虚地址对应的存储单元是否已经装入主存。若已在主存中，则通过地址变换，CPU可直接访问主存指示的实际单元；若不在主存中，则把包含这个字的一页或一段调入主存后再由CPU访问；若主存已满，则采用替换算法置换主存中的一页或一段。</p>
+<p>虚拟存储器由软件（操作系统）和硬件共同实现。</p>
+<h3 id="页式虚拟存储器"><a class="header" href="#页式虚拟存储器">页式虚拟存储器</a></h3>
+<p>以页为基本单位的存储器。虚拟空间与主存空间都被划分为同样大小的页，主存的页称为<strong>实页</strong>，虚存的页称为<strong>虚页</strong>。</p>
+<p>把虚拟地址分为两个字段：<strong>虚页号</strong>和<strong>页内地址</strong>。虚拟地址到物理地址的转换是由页表实现的。</p>
+<p>页表是一张存放在主存中的虚页号和实页号（物理块号）的对照表，它记录程序的虚页调入主存时被安排在主存的位置。页表一般长久地保存在主存中。</p>
+<p><strong>页表</strong></p>
+<ul>
+<li>
+<p>有效位（装入位）：用来表示对应页面是否在主存，若为1，则表示该虚拟页已经从外存调入主存，此时页表项存放该页的<strong>物理页号</strong>；若为0，则表示没有调入主存，此时页表项可以存放该页的<strong>磁盘地址</strong>。</p>
+</li>
+<li>
+<p>脏位（修改位）：用来表示页面是否被修改过，虚存机制中采用回写策略，利用脏位可以判断替换时是否需要写回磁盘。</p>
+</li>
+<li>
+<p>引用位（使用位）：用来配合替换策略进行设置，例如FIFO、LRU。</p>
+</li>
+</ul>
+<p>CPU执行指令时，需要先将虚拟地址转换为主存物理地址。<strong>每个进程</strong>都有一个页表基址寄存器，存放该进程的页表首地址，然后根据虚拟地址高位部分的虚拟页号找到对应的页表项。若装入位为1，则取出物理页号，和虚拟地址低位部分进行拼接，形成实际物理地址；若装入位为0，则说明缺页（未调入主存），需要操作系统进行缺页处理。</p>
+<p>页式虚拟存储器的优点是页面长度固定、页表简单、调入方便。缺点是页不是逻辑上独立的实体，处理、保护和共享都不如段式虚拟存储器方便。</p>
+<p><strong>快表(TLB)</strong></p>
+<p>依据程序执行的局部性原理，在一段时间内总是经常访问某些页时，若把这些页对应的页表存放在<strong>高速缓冲器</strong>组成的快表（TLB）中，则可以明显地提高效率。相应地把放在主存中的页表称为慢表（Page）。</p>
+<p>在地址转换时，首先查找快表，若命中，则无须访问主存中的页表，减少了一次访问主存的次数。</p>
+<p><strong>具有TLB和Cache的多级存储系统</strong></p>
+<p><img src="https://raw.githubusercontent.com/eternityqjl/blogGallery/master/%E5%B8%A6TLB%E7%9A%84CPU%E8%AE%BF%E5%AD%98%E8%BF%87%E7%A8%8B.jpg" alt="" /></p>
+<h3 id="段式虚拟存储器"><a class="header" href="#段式虚拟存储器">段式虚拟存储器</a></h3>
+<p>段是按照<strong>程序的逻辑结构</strong>划分的，各个段的长度因程序而异。把虚拟地址分为两部分：<strong>段号</strong>和<strong>段内地址</strong>。</p>
+<p>虚拟地址到实地址之间的变换是由<strong>段表</strong>来实现的。段表是程序的<strong>逻辑段</strong>和在主存中<strong>存放位置</strong>的对照表。段表的每行记录与某个段对应的段号、装入位、段起点和段长等信息。由于段长度可变，所以段表中要给出各段的起始地址与段的长度。</p>
+<p>CPU根据虚拟地址访问时，先根据<strong>段号</strong>和<strong>段表基地址</strong>拼接成对应的段表行，然后根据段表行的装入位判断该段是否已调入主存。已调入主存时，从段表读出该段的起始地址，与段内地址（偏移量）相加，得到对应主存实地址。</p>
+<h3 id="段页式虚拟存储器"><a class="header" href="#段页式虚拟存储器">段页式虚拟存储器</a></h3>
+<p>把程序按逻辑结构分段，每段再划分为固定大小的页，主存空间也划分为大小相等的页，程序对主存的点入、调出仍以页为基本单位。这种虚拟存储器中，每个程序对应一个段表，每段对应一个页表，段的长度必须是页长的整数倍，段的起点必须是某一页的起点。</p>
+<p>虚地址分为段号、段内页号、页内地址三部分。</p>
+<p>详细内容见操作系统相关部分。</p>
+<h3 id="虚拟存储器与cache的比较"><a class="header" href="#虚拟存储器与cache的比较">虚拟存储器与Cache的比较</a></h3>
+<p><strong>相同之处</strong></p>
+<p>都为了提高系统性能；都把数据划分为小信息块，并作为基本的传递单位；都有地址的映射、替换算法、更新策略；都依据程序的局部性原理，应用快速缓存思想，将活跃的数据放在相对高速的部件上。</p>
+<p><strong>不同之处</strong></p>
+<ul>
+<li>Cache主要解决<strong>系统速度</strong>问题，虚拟存储器为了解决<strong>容量问题</strong></li>
+<li>Cache<strong>全由硬件实现</strong>，是硬件存储器，对所有程序员透明；虚拟存储器由<strong>OS和硬件共同实现</strong>，是逻辑上的存储器，对系统程序员不透明</li>
+<li>虚拟存储器不命中时对系统性能的影响更大</li>
+<li>辅存与CPU没有建立直接通路，需要经过主存访问</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/计算机组成原理/CH04-指令系统.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/计算机组成原理/CH04-指令系统.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

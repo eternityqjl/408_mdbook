@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH02-物理层 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html" class="active"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="通信基础"><a class="header" href="#通信基础">通信基础</a></h2>
+<h3 id="基本概念"><a class="header" href="#基本概念">基本概念</a></h3>
+<p><strong>数据、信号与码元</strong></p>
+<p>码元是指用一个固定时长的信号波形（数字脉冲）表示<strong>一位k进制数字</strong>，代表<strong>不同离散数值的基本波形</strong>。是数字通信中数字信号的计量单位，这个时长内的信号称为k进制码元，该时常称为码元宽度。</p>
+<p>例如使用二进制编码时只有两种不同码元：一种代表0状态，另一种代表1状态</p>
+<p><strong>信源、信道与信宿</strong></p>
+<p>信道与电路不等同，一个信道可视为一条线路的逻辑部件，一般用来表示向某个方向传送信息的介质。因此一条线路往往包括一条发送信道和一条接收信道。</p>
+<p>信道的划分：</p>
+<ul>
+<li>按传输信号形式分：
+<ul>
+<li>模拟信道</li>
+<li>数字信道</li>
+</ul>
+</li>
+<li>按传输介质分：
+<ul>
+<li>无线信道</li>
+<li>有线信道</li>
+</ul>
+</li>
+<li>信道上的传送信号有基带信号和宽带信号之分</li>
+<li>按通信双方信息的交换方式分：
+<ul>
+<li>单向通信</li>
+<li>半双工通信</li>
+<li>全双工通信</li>
+</ul>
+</li>
+</ul>
+<p><strong>速率、波特与带宽</strong></p>
+<h3 id="奈奎斯特定理与香农定理"><a class="header" href="#奈奎斯特定理与香农定理">奈奎斯特定理与香农定理</a></h3>
+<p><strong>奈奎斯特定理</strong></p>
+<p>具体信道所能通过的频率范围是有限的。信号中许多高频分量不能通过信道，否则在传输中会衰减，导致接收端收到的信号波形失去码元之间的清晰界限，这种现象称为<strong>码间串扰</strong>。</p>
+<p>理想信道下的极限传输速率：
+$$
+2W\log_2 V
+$$
+<strong>香农定理</strong></p>
+<h3 id="编码与调制"><a class="header" href="#编码与调制">编码与调制</a></h3>
+<p>数据无论是数字的还是模拟的，为了传输都必须转变成信号。把数据变换为模拟信号的过程称为调制，把数据变换为数字信号的过程称为编码。</p>
+<p><strong>数字数据编码为数字信号</strong></p>
+<ul>
+<li>归零编码（RZ）：高电平代表1，低电平代表0；每个时钟周期的中间均跳变到低电平，接收方根据该跳变调整本方的时钟基准，为传输双方提供了子同步机制；归零要占用一定带宽，因此传输速率会受到一定影响。</li>
+<li>非归零编码（NRZ）：与RZ的区别是不用归零，一个周期可以全部用来传输数据，但NRZ编码无法传递时钟，双方难以同步，若想传输高速同步数据需要带有时钟线。</li>
+<li>反向非归零编码（NRZI）：用信号的反转代表0，信号保持不变代表1。翻转的信号本身可以作为一种通知机制。这种编码既能传输时钟信号又能不损失系统带宽。USB2.0采用这种编码。</li>
+<li>曼彻斯特编码：将一个码元分为两个相等间隔，前一个间隔为高电平后一个间隔为低电平代表码元1；码元0的表示相反。在每个码元的中间出现电平跳变，位中间的跳变既作为时钟信号又作为数据信号；他所占的频带宽度是原始基带宽度的两倍。以太网使用这种编码。</li>
+<li>差分曼彻斯特编码：常用于局域网传输。若码元为1，则前半个码元的电平与上一个码元的后半部分相同；若码元为0，则情形相反。每个码元的中间都有一次电平跳变，可以实现自同步，且抗干扰好。</li>
+<li>4B/5B编码</li>
+</ul>
+<p><strong>数字数据调制为模拟信号</strong></p>
+<ul>
+<li>幅移键控（ASK）：通过改变载波信号的<strong>幅值</strong>来表示数字0和1.</li>
+<li>频移键控（FSK）：通过改变载波信号的<strong>频率</strong>来表示数字0和1.</li>
+<li>相移键控（PSK）：改变载波信号的<strong>相位</strong>来表示数字0和1.</li>
+<li>正交振幅调制（QAM）：频率相同的前提下，将ASK和PSK结合</li>
+</ul>
+<p><strong>模拟数据编码为数字信号</strong></p>
+<p>包括三个步骤：采样、量化和编码。</p>
+<p><strong>模拟信号调制为模拟信号</strong></p>
+<p>为了实现传输的有效性，可能需要较高的频率。还可以使用频分复用技术，充分利用带宽。</p>
+<h3 id="电路交换报文交换和分组交换"><a class="header" href="#电路交换报文交换和分组交换">电路交换、报文交换和分组交换</a></h3>
+<p><strong>电路交换</strong></p>
+<p>传输前两结点之间先建立一条专用（双方独占）的物理通信路径，这一路径在整数数据传输期间一直被占用，直到通信结束。</p>
+<ul>
+<li>
+<p>技术优点：通信延时小；有序传输；没有冲突；适用范围广；实时性强；控制简单。</p>
+</li>
+<li>
+<p>缺点：建立时间长；线路独占；灵活性差；难以规格化。</p>
+</li>
+</ul>
+<p><strong>报文交换</strong></p>
+<p>交换的单位是报文，报文携带有目标地址、源地址等信息。报文交换在交换结点采用的是<strong>存储转发</strong>的传输方式。</p>
+<ul>
+<li>优点：无需建立连接；动态分配线路；提高可靠性；提高线路利用率；提供多目标服务。</li>
+<li>缺点：会引起转发时延；对报文的大小没有限制，要求网络结点有较大的缓存空间。</li>
+</ul>
+<p>报文交换在早期的电报通信网中使用，现在较少使用。</p>
+<p><strong>分组交换</strong></p>
+<p>解决了报文交换中大报文传输的问题。分组交换限制了每次传送的数据块大小的上限，把大数据块划分为合理的小数据块，再加上一些必要的控制信息，构成分组。网络结点根据控制信息把分组送到下一个结点。</p>
+<ul>
+<li>
+<p>优点：无建立时延；线路利用率高；简化了存储管理；加速传输；减少了出错概率和重发数据量。</p>
+</li>
+<li>
+<p>缺点：存在传输时延；需要传输额外信息量；当分组交换采用数据报服务时，可能会出现时序、丢失或重复分组。</p>
+</li>
+</ul>
+<h3 id="数据报与虚电路"><a class="header" href="#数据报与虚电路">数据报与虚电路</a></h3>
+<p><strong>数据报</strong></p>
+<p>网络层数据报分组。</p>
+<p>特点：</p>
+<ul>
+<li>发送分组前不需要建立连接</li>
+<li>网络尽最大努力交付，不保证可靠性；为每个分组进行独立的路由选择，转发的路径可能不同，分组不一定按序到达目的结点。</li>
+<li>发送的分组要包含完整的发送端和接收端地址，以便进行独立传输。</li>
+<li>分组在交换结点存储转发时，需要排队等候处理。</li>
+<li>网络具有冗余路径。</li>
+<li>存储转发的延时一般较小，提高了网络吞吐量。</li>
+<li>收发双方不独占某条链路</li>
+</ul>
+<p><strong>虚电路</strong></p>
+<p>试图将数据报与电路交换结合起来。</p>
+<h2 id="传输介质"><a class="header" href="#传输介质">传输介质</a></h2>
+<h3 id="双绞线同轴电缆光纤无线传输介质"><a class="header" href="#双绞线同轴电缆光纤无线传输介质">双绞线、同轴电缆、光纤、无线传输介质</a></h3>
+<p><strong>双绞线</strong></p>
+<p>分为屏蔽和非屏蔽，最常用传输介质。</p>
+<p>带宽取决于痛心啊粗细和双数距离。</p>
+<p><strong>同轴电缆</strong></p>
+<p>由内导体、绝缘层、网状编制屏蔽层、塑料外层构成。</p>
+<p>分为50欧姆和75欧姆两类；50欧姆用于传送基带数字信号，又称基带同轴电缆；75欧姆用于传送宽带信号，又称宽带同轴电缆。</p>
+<p><strong>光纤</strong></p>
+<p>有光脉冲表示1，无光脉冲表示0.</p>
+<p>单模光纤：直径只有光的一个波长大小，沿直线传播。</p>
+<p>多模光纤：光的全反射特性。</p>
+<p>光纤优点：</p>
+<ul>
+<li>通信容量大</li>
+<li>传输损耗小</li>
+<li>抗雷电和电磁特性好</li>
+<li>无串音干扰</li>
+<li>体积小，重量轻</li>
+</ul>
+<p><strong>无线传输介质</strong></p>
+<ul>
+<li>无线电波</li>
+<li>微波、红外线和激光
+<ul>
+<li>微波通信频率高，频段范围宽，载波频率通常为2-40GHz</li>
+</ul>
+</li>
+</ul>
+<h3 id="物理接口的特性"><a class="header" href="#物理接口的特性">物理接口的特性</a></h3>
+<ul>
+<li>机械特性：接口所用接线器的形状和尺寸、引脚数目和排列、固定和锁定装置</li>
+<li>电气特性：接口电缆各条线上出现的电压的范围</li>
+<li>功能特性：某条线上某一电平的电压的意义</li>
+<li>过程特性：对于不同功能的各种可能事件出现的顺序</li>
+</ul>
+<h2 id="物理层设备"><a class="header" href="#物理层设备">物理层设备</a></h2>
+<h3 id="中继器"><a class="header" href="#中继器">中继器</a></h3>
+<p>将数字信号整型并再转发出去。用来扩大网络规模。在10BASE5以太网规范中，互相串联的中继器个数不能超过4个，4个中继器只有三段可以接挂计算机。</p>
+<h3 id="集线器"><a class="header" href="#集线器">集线器</a></h3>
+<p>集线器(Hub)实质上是一个多端口的中继器，在网络中只起信号放大和转发的功能，目的是扩大网络的传输范围，不具备信号的定向传送能力，即信号的传输方向是固定的。。</p>
+<h2 id="其他问题"><a class="header" href="#其他问题">其他问题</a></h2>
+<p>基带传输、频带传输和宽带传输的区别：</p>
+<ul>
+<li>基带传输：在计算机内部或相邻设备之间近距离不经调制直接传输的方式。</li>
+<li>频带传输：用数字信号对特定频率的载波进行调制，将其变成适合于传送的信号后再进行传输。常用于远距离或无线传输。</li>
+<li>宽带传输：借助频带传输，可以将链路容量分解为两个或多个信道，每个信道可以携带不同的信号。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机网络/CH01-计算机网络体系结构.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/计算机网络/CH03-链路层.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机网络/CH01-计算机网络体系结构.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/计算机网络/CH03-链路层.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

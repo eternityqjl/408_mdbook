@@ -1,0 +1,494 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH03-链路层 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html" class="active"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="数据链路层功能"><a class="header" href="#数据链路层功能">数据链路层功能</a></h2>
+<h3 id="为网络层提供服务"><a class="header" href="#为网络层提供服务">为网络层提供服务</a></h3>
+<ul>
+<li><strong>无确认的无连接</strong>服务：源机器发送数据帧时不需要建立链路连接，目的机器收到数据帧时无需发回确认。数据链路层不重发丢失的帧，交给上层进行处理。</li>
+<li><strong>有确认的无连接</strong>服务：源机器发送数据帧时不需要建立链路连接，目的机器接收到数据帧时必须发回确认；源机器在规定时间内未收到确认信号时，就重传丢失的帧，以提高传输的可靠性。</li>
+<li><strong>有确认的面向连接</strong>服务：帧传输过程分为三个阶段：建立数据链路、传输帧、释放数据链路。目的机器对收到的每一帧都要给出确认，源机器收到确认后才能发送下一帧。</li>
+</ul>
+<h3 id="链路管理"><a class="header" href="#链路管理">链路管理</a></h3>
+<p>链路层连接的建立、维持和释放。主要用于面向连接的服务。</p>
+<h3 id="帧定界帧同步和透明传输"><a class="header" href="#帧定界帧同步和透明传输">帧定界、帧同步和透明传输</a></h3>
+<p>两台机器之间传输信息时将网络层的分组封装成帧，以帧的格式进行传送。将一段数据前后分别添加首部和尾部的控制信息后，就构成了帧。这些控制信息的一个重要作用就是确定帧的界限。帧同步指的是接收方能够从接收到的二进制信息比特流中区分出帧的起始与终止。</p>
+<p>为了提高传输速率，应当使帧的数据部分的长度尽可能大于首部和尾部的长度，每种数据链路层协议都规定了帧的数据部分的长度上限——最大传送单元（MTU）</p>
+<h3 id="流量控制"><a class="header" href="#流量控制">流量控制</a></h3>
+<p>用来解决收发双方各自的工作速率和缓存空间的差异。</p>
+<p>流量控制在许多高层协议中也存在，只不过控制的对象不同。</p>
+<h3 id="差错控制"><a class="header" href="#差错控制">差错控制</a></h3>
+<p>由于噪声等原因，帧在传输过程中可能出现错误，差错控制能够让发送方确认接收方是否正确收到了由其发送的数据。这些错误可分为位错和帧错。</p>
+<p>位错指某些位发生了错误，通常采用循环冗余校验（CRC）来发现错误，通过自动重传请求（ARQ）来重传错误。</p>
+<h2 id="组帧"><a class="header" href="#组帧">组帧</a></h2>
+<p>发送方根据一定的规则把网络层递交的分组封装成帧（称为组帧）。组帧主要为了解决帧定界、帧同步、透明传输等问题。</p>
+<h3 id="字符计数法"><a class="header" href="#字符计数法">字符计数法</a></h3>
+<p>在<strong>帧的头部</strong>使用一个计数字段来标明<strong>帧内字符数</strong>（包括计数字段）。目的结点通过数据链路层收到的字节计数值时，就知道后面跟的字节数，从而可以确定帧结束的位置。</p>
+<p>这种方法的问题在于如果计数字段出错，就失去了帧边界划分的依据，接收方就无法判断所传输帧的结束位和下一帧的开始位，收发双方失去同步，造成灾难性后果。</p>
+<h3 id="字符填充的首尾定界符法"><a class="header" href="#字符填充的首尾定界符法">字符填充的首尾定界符法</a></h3>
+<p>使用特定字符来定界一帧的开始与结束。<strong>控制字符SOH</strong>放在帧的最前面，表示帧的首部开始，<strong>控制字符EOT</strong>表示帧的结束。为了使得信息位中出现的特殊字符不被误判为帧的首尾定界符，可在特殊字符前填充一个**转义字符(ESC)**来加以区分，以实现数据的透明传输。如果ECS也出现在数据中，那么仍在转义字符前插入一个转义字符。</p>
+<h3 id="零比特填充的首尾标志法"><a class="header" href="#零比特填充的首尾标志法">零比特填充的首尾标志法</a></h3>
+<p>这种方法允许数据帧包含任意个数的比特，也允许每个字符的编码包含任意个数的比特。它使用一个特定的比特模式，即01111110来标志一帧的开始和结束。为了不是信息位中出现的比特流01111110被误判为帧的首尾标志，发送方的数据链路层在信息位遇到<strong>5个连续的1时</strong>，自动在其后插入一个0；接收方则<strong>每收到5个1，自动删除后面紧跟的0</strong>，以此恢复信息。</p>
+<p>这种方法很容易用硬件实现。</p>
+<h3 id="违规编码法"><a class="header" href="#违规编码法">违规编码法</a></h3>
+<p>物理层编码通常采用违规编码法。例如曼彻斯特编码方法将数据比特1编码成<strong>高-低</strong>电平对，将数据比特0编码成<strong>低-高</strong>电平对，而<strong>高-高</strong>和<strong>低-低</strong>电平对在数据比特中是违规的，利用这些违规的编码序列来定界帧的起始和终止。</p>
+<p>由于字节计数法中计数字段的脆弱性和字符填充法实现上的复杂性和不兼容性，目前常采用的组帧方法为<strong>比特填充法和违规编码法</strong>。</p>
+<p>局域网802.11就是用了这种编码。</p>
+<h2 id="差错控制-1"><a class="header" href="#差错控制-1">差错控制</a></h2>
+<p>这里只讨论比特差错。</p>
+<p>利用编码技术进行差错控制，主要有<strong>自动重传请求ARQ</strong>和<strong>前向纠错FEC</strong>两类。ARQ中接收端检测出差错时就设法通知发送方进行重传；FEC接收端不但能发现错误，还能确定比特串的错误位置，从而加以纠正。</p>
+<h3 id="检错编码"><a class="header" href="#检错编码">检错编码</a></h3>
+<p>检错编码都采用冗余编码技术，核心思想为在有效数据被发送前，按照某种关系附加一定的冗余位，构成符合某一规则的码字后再发送。当要发送的有效数据发生变化时，相应的冗余位也随之变化，接收端根据收到的码字是否符合原来的规则判断是否出错。</p>
+<p><strong>奇偶校验码</strong></p>
+<p>由n-1位信息位和1位校验元组成。</p>
+<ul>
+<li>奇校验：附加一个校验元后，码长为n的码字中1的个数为奇数</li>
+<li>偶校验：附加一个校验元后，码长为n的码字中1的个数为偶数</li>
+</ul>
+<p>只能检测<strong>奇数位</strong>的出错情况，但并不知道是哪些位出错了。</p>
+<p><strong>循环冗余码CRC</strong></p>
+<blockquote>
+<p>注：循环冗余编码是由纠错功能的，但数据链路层仅使用了它的检错功能，检测到帧出错就直接丢弃。</p>
+</blockquote>
+<h3 id="纠错编码"><a class="header" href="#纠错编码">纠错编码</a></h3>
+<p>在发送的数据块上附加足够的冗余信息，使接收方能够推导出发送方实际送出的应该是什么样的比特。</p>
+<p><strong>海明码</strong></p>
+<p>在有效信息位中加入几个校验位形成海明码，并把海明码的每个二进制位分配到几个奇偶校验组中，当某一位出错后，就会引起有关的几个校验位的值发生变化，这样不但能发现错位，还能指出错位的位置，然后直接进行纠错。</p>
+<p>以数据码1010为例讲述海明码的编码原理：</p>
+<ul>
+<li>确定海明码的位数：</li>
+</ul>
+<p>设n为有效信息位数，k为校验位的位数，则n和k应该满足：
+$$
+n+k\leq 2^k -1 
+$$
+海明码位数为$n+k=7\leq 2^3-1$成立，则n、k有效。设信息位为$D_4D_3D_2D_1$（1010），校验位为$P_1P_2P_3$，共三位，对应的海明码为$H_7H_6H_5H_4H_3H_2H_1$。</p>
+<ul>
+<li>确定校验位的分布</li>
+</ul>
+<p>规定校验位$P_i$在海明位号为$2^{i-1}$的位置上，其余各位为信息位：</p>
+<p>$P_1$的海明位号为1，即$H_1$为$P_1$；</p>
+<p>$P_2$的海明位号为2，即$H_2$为$P_2$；</p>
+<p>$P_3$的海明位号为4，即$H_4$为$P_3$；</p>
+<p>将信息位按照原来的顺序插入，则分布如下：</p>
+<ul>
+<li>分组以形成校验关系</li>
+</ul>
+<p>每个数据位用多个校验位进行校验，但要满足：被校验<strong>数据位的海明位号</strong>等于校验该数据位的各<strong>校验位的海明位号之和</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/eternityqjl/blogGallery/master/%E6%B5%B7%E6%98%8E%E7%A0%81%E6%A0%A1%E9%AA%8C%E5%88%86%E7%BB%84.jpg" alt="" /></p>
+<ul>
+<li>校验位取值</li>
+</ul>
+<p>校验位$P_i$的值为第i组所有位（由该校验位校验的所有数据为）的异或：
+$$
+P_1=D_1\oplus D_2\oplus D_4 = 0 \
+P_2=D_1\oplus D_3\oplus D_4 = 1 \
+P_3=D_2\oplus D_3\oplus D_4 = 0 \
+$$
+所以1010对应的海明码为1010010</p>
+<ul>
+<li>海明码的校验原理：</li>
+</ul>
+<p>每个校验组分别利用校验位和参与形成该校验位的信息位进行奇偶校验检查，构成k各校验方程：
+$$
+S_1=P_1\oplus D_1\oplus D_2\oplus D_4 \
+S_2=P_2\oplus D_1\oplus D_3\oplus D_4 \
+S_3=P_3\oplus D_2\oplus D_3\oplus D_4 \
+$$
+若$S_1S_2S_3$的值为000，则说明无错；否则说明出错，这个数就是错误的位号，如$S_1S_2S_3=001$，说明第一位出错，直接将该位取反就可以纠错。</p>
+<h2 id="流量控制与可靠传输机制"><a class="header" href="#流量控制与可靠传输机制">流量控制与可靠传输机制</a></h2>
+<h3 id="流量控制可靠传输与滑动窗口机制"><a class="header" href="#流量控制可靠传输与滑动窗口机制">流量控制、可靠传输与滑动窗口机制</a></h3>
+<p>流量控制涉及对链路上帧的发送速率的控制，使得接收方有足够的缓冲空间来接受每个帧。</p>
+<p>流量控制的基本方法是由<strong>接收方</strong>控制发送方发送数据的速率，常见方式有：停止-等待协议、滑动窗口协议。</p>
+<p><strong>停止-等待协议</strong></p>
+<p>发送方每发送一帧，都要等待接收方的应答信号，之后才能发送下一帧；接收方每接受一帧，都要反馈一个应答信号，表示可接受下一帧，如果接收方不反馈，发送方就要一直等待下去。传输效率很低。</p>
+<p><strong>滑动窗口基本原理</strong></p>
+<p>任意时刻，发送方维持一组连续的允许发送的帧的序号，称为发送窗口；接收方也维持一组连续的允许接收帧的序号，称为接收窗口。发送窗口用来对发送方进行流量控制，发送窗口的大小$W_T$代表在还未收到对方确认信息的情况下发送方最多还能发送多少个数据帧。在接收方，只有收到的数据帧的序号落入接收窗口内时，才允许将该帧收下，若接收到的数据帧落在接收窗口外，则将其丢弃。</p>
+<p><strong>可靠传输机制</strong></p>
+<p>数据链路层的可靠传输常使用<strong>确认</strong>和<strong>超时重传</strong>两种机制完成。</p>
+<p>确认是一种无数据的控制帧，这种控制帧使得接收方让发送方知道哪些内容被正确接受，有时为了提高传输效率，将确认捎带在一个回复帧中。</p>
+<p>超时重传是指发送方在发送完一个帧后就启动一个<strong>定时器</strong>，在一定时间内如果没有得到发送的数据帧的确认帧，就重新发送该数据帧，直到发送成功为止。</p>
+<p>自动重传请求ARQ通过接收方请求发送方发送出错的数据帧来恢复出错的帧。ARQ分为三种：停止-等待ARQ、后退N帧ARQ、选择性重传ARQ。后两种协议是滑动窗口技术和ARQ技术的结合。</p>
+<p>数据链路层中流量控制机制和可靠传输机制是交织在一起的。</p>
+<blockquote>
+<p>注：现有的实际有线网络很少采用可靠传输，大多数教材把这部分内容放在第5章讨论，这里按照408考纲。</p>
+</blockquote>
+<h3 id="单帧滑动窗口与停止-等待协议"><a class="header" href="#单帧滑动窗口与停止-等待协议">单帧滑动窗口与停止-等待协议</a></h3>
+<p>停止-等待协议相当于<strong>发送窗口和接收窗口大小均为1</strong>的滑动窗口协议。</p>
+<p>该协议中，除了数据帧丢失外，还可能存在以下差错：</p>
+<ul>
+<li>到达目的站的帧已遭到破坏，接收方将该帧丢弃。源站配备了计时器，计时器满且未收到确认时就重传该帧。</li>
+<li>数据帧正确传输而确认帧遭到破坏。发送方会重传该帧，接收方丢弃收到的同样的数据帧，并重传一个该帧的确认帧。</li>
+</ul>
+<p>该种协议的信道利用率很低。</p>
+<h3 id="多帧滑动窗口与后退n帧协议gbn"><a class="header" href="#多帧滑动窗口与后退n帧协议gbn">多帧滑动窗口与后退N帧协议（GBN）</a></h3>
+<p>发送方可以连续的发送帧。当接收方检测到失序的信息帧后，要求发送方重发最后一个正确接收的信息帧之后的所有未被确认的帧。</p>
+<p>即相当于接收方只允许<strong>按顺序</strong>接收帧。</p>
+<p>后退N帧协议的<strong>接收窗口为1</strong>，可以保证<strong>按序</strong>接收数据帧。若采用n比特对帧编号，则其发送窗口的尺寸$W_T$应满足$1\leq W_T\leq 2^n-1$，若发送窗口的尺寸大于$2^n-1$，则会造成接收方无法分辨新帧和旧帧。</p>
+<p>这种协议提高了信道利用率但重传时会把原来已经传送正确的数据帧进行重传，这种方式又降低了效率。</p>
+<p>当信道的传输质量很差导致误码率较大时，后退N帧协议不一定优于停止-等待协议。</p>
+<h3 id="多帧滑动窗口与选择重传协议sr"><a class="header" href="#多帧滑动窗口与选择重传协议sr">多帧滑动窗口与选择重传协议（SR）</a></h3>
+<p>为了进一步提高信道的利用率，可以设法<strong>只重传出现差错的数据帧或计时器超时的数据帧</strong>。此时必须加大接收窗口，以便先收下发送序号不连续但仍处在接收窗口中的那些数据。这就是<strong>选择重传ARQ</strong>。</p>
+<p>一般情况下，SR协议的接收窗口和发送窗口的<strong>大小是相同</strong>的。</p>
+<p><strong>信道效率（信道利用率）</strong>：从时间角度的定义，是对发送方而言的，指发送方在<strong>一个发送周期的时间内</strong>，有效地发送数据所占的时间占整个发送周期地比率。</p>
+<p><strong>信道吞吐率</strong>=信道利用率*发送方地发送速率</p>
+<h2 id="介质访问控制mac"><a class="header" href="#介质访问控制mac">介质访问控制MAC</a></h2>
+<p>为使用介质的每个结点<strong>隔离来自同一信道上其他结点所传送的信号</strong>，以协调活动结点的传输。用来决定广播信道中<strong>信道分配</strong>的协议属于数据链路层的一个子层，成为MAC子层。</p>
+<p>采取一定的措施，使得两对结点之间的通信不会发生互相干扰的情况。</p>
+<p>常见的介质访问控制方法有：</p>
+<ul>
+<li>静态划分信道：
+<ul>
+<li>信道划分介质访问控制</li>
+</ul>
+</li>
+<li>动态分配信道：
+<ul>
+<li>随机访问介质访问控制</li>
+<li>轮询访问介质访问控制</li>
+</ul>
+</li>
+</ul>
+<h3 id="信道划分"><a class="header" href="#信道划分">信道划分</a></h3>
+<p>多路复用技术：通过在一条介质上同时携带<strong>多个传输信号</strong>的方法提高传输系统的利用率。多路复用技术把多个信号组合在一条物理链路中进行传输，提高了信道利用率。</p>
+<p>信道划分的实质就是通过<strong>分时、分频、分码等</strong>方法把原来的一条广播信道在逻辑上划分为多条两个结点之间通信互不干扰的子信道。</p>
+<p><strong>频分多路复用FDM</strong></p>
+<p>将多路基带信号调制到不同频率的载波上，再叠加形成一个符合信号的多路复用技术。可将物理信道的总带宽分割成若干与传输信号带宽相同的子信道，每个子信道传输一种信号。</p>
+<p>每个子信道分配的带宽可以不同，但总和不能超过物理信道总带宽。为了防止子信道之间的干扰，相邻信道之间需要加入保护频带。</p>
+<blockquote>
+<p>数字信号中，带宽是指单位时间内链路能够通过的数据量。是波特率的俗称，波特率是系统传输数据的速度；即表示信道容量。</p>
+</blockquote>
+<p><strong>时分多路复用TDM</strong></p>
+<p>将一条物理信道按照时间划分为<strong>若干时间片</strong>，轮流地分配给多个信号使用。每个时间片由复用的一个信号占用，不像FDM那样同一时间同时发送多路信号。利用每个信号在时间上的交叉，就可以在一条物理信道上传输多个信号。</p>
+<p>统计时分多路复用STDM是TDM的一种改进，采用STDM帧，并不固定分配时隙，而是按需动态分配时隙，只有终端有数据传送时才会分配到时间片，这样可以提高线路的利用率。</p>
+<p><strong>波分多路复用WDM</strong></p>
+<p>即<strong>光的频分多路复用</strong>，是在一根光纤中传输多种不同波长（频率）的光信号，由于波长不同，各路光信号互不干扰，最后再用波长分解复用器将各路波长分解出来。</p>
+<p>光波处于频谱的高频段，有很高的带宽。</p>
+<p><strong>码分多路复用CDM</strong>
+采用不同的编码来区分各路原始信号。与TDM和FDM不同，它既共享了信道频率，又共享了时间。</p>
+<p>更常用的名称是<strong>码分多址CDMA</strong>，原理是将每个比特时间再划分为m个短的时间槽，称为码片，通常m值为64或128.每个站点（终端）被指派一个唯一的m位码片序列，发送1时，站点发送它的<strong>码片序列</strong>；发送0时，站点发送该<strong>码片序列的反码</strong>。当两个或多个站点同时发送时，各路数据在信道中<strong>线性相加</strong>；为从信道中分理出各路信号，要求各个站点的码片序列<strong>相互正交</strong>。</p>
+<p>主要用于移动通信系统，例如3G时代的CDMA网络。</p>
+<h3 id="随机访问"><a class="header" href="#随机访问">随机访问</a></h3>
+<p>随机访问介质控制协议中，不采用集中控制方式解决发送信息的次序问题，所有用户能根据自己的意愿随机地发送信息，占用全部信道速率。</p>
+<p>为了解决随机接入发生的碰撞，每个用户需要按照一定的规则<strong>反复地重传</strong>它的帧，直到该帧无碰撞地通过。核心思想是：胜利者通过争用获得信道，从而获得信息的发送权。</p>
+<p>随机介质访问控制实质上是一种将<strong>广播信道</strong>转化为<strong>点到点信道</strong>的行为。</p>
+<p><strong>ALOHA协议</strong></p>
+<p>夏威夷大学早期研制的随机接入系统，是Additive Link On-line HAwaii system的缩写，分为<strong>纯ALOHA</strong>协议和<strong>时隙ALOHA</strong>协议。</p>
+<ol>
+<li><strong>纯ALOHA协议</strong></li>
+</ol>
+<p>基本思想是：当网络中任何一个站点需要发送数据时，可以<strong>不进行任何检测</strong>就发送数据，如果在一段时间内未收到确认，那么该站点就认为传输过程中发生了冲突。发送站点需要等待一段时间后再发送数据，直到发送成功。</p>
+<p>当碰撞发生后，碰撞双方（也可以是多方）所发送的数据出现了差错，因而都需要进行重传，但各站不能马上重传；这里采用的重传策略是等待一段<strong>随机的时间</strong>，然后进行重传，若再次发生碰撞，则需再等待一段随机的时间，直到重传成功。</p>
+<p>纯ALOHA网络的吞吐量很低，为了克服这一缺点，在原始纯ALOHA的基础上改进产生了时隙ALOHA协议。</p>
+<ol start="2">
+<li><strong>时隙ALOHA协议</strong></li>
+</ol>
+<p>该协议把各站在时间上<strong>同步</strong>起来，并将时间划分为一段段等长的时隙（Slot），规定只能在<strong>每个时隙的开始</strong>时才能发送一帧。这样避免了用户发送数据的随意性，减少了数据冲突的可能性，提高了信道利用率。</p>
+<p>时隙的长度$T_0$使得每个帧正好在一个时隙内发送完毕。每个帧到达后，一般要在缓存中等待一段小于$T_0$的时间，然后才能发送出去。发生碰撞后的重传策略与纯ALOHA相同。</p>
+<p>时隙ALOHA的吞吐量相比于纯ALOHA网络提升了一倍。</p>
+<p><strong>CSMA协议</strong></p>
+<p><strong>载波侦听多路访问</strong>协议。ALOHA协议中每个站点都是随心所欲地发送数据，即使其他站点正在发送也照发不误，因此发生碰撞的概率仍然很大。</p>
+<p>CSMA的思想是：每个站点在<strong>发送前都先侦听</strong>一下共用信道，发现信道空闲后再发送，会大大降低冲突的可能，提高信道利用率。这相当于在ALOHA协议上提出的一种改进，多了一个载波侦听装置。</p>
+<p>根据侦听方式和侦听到信道忙后的处理方式不同分为：</p>
+<ol>
+<li><strong>1-坚持 CSMA</strong></li>
+</ol>
+<p>1-persistent CSMA，一个节点要发送数据时，先侦听信道，如果空闲则<strong>立即发送</strong>；如果信道忙，则等待，同时<strong>继续侦听直到信道空闲</strong>；如果发生冲突，则随机等待一段时间后再重新开始侦听信道。</p>
+<p>1-坚持的含义是：侦听到信道空闲后，发送帧的概率为1，既立即发送。</p>
+<p>另外，<strong>传播时延</strong>对1-坚持CSMA的性能影响较大，结点A发送数据时，可能还未发送到结点B，结点B也要发送数据，侦听到信道空闲，立即发送数据，结果必然导致冲突。</p>
+<ol start="2">
+<li><strong>非坚持 CSMA</strong></li>
+</ol>
+<p>基本思想是：一个结点要发送数据，首先侦听信道；如果空闲，<strong>立即发送数据</strong>；如果信道忙，<strong>放弃侦听，等待一个随机时间后</strong>再重复上述过程。</p>
+<p>非坚持CSMA在侦听到信道忙后就放弃了侦听，降低了多个结点等待信道空闲后同时发送数据导致冲突的概率，但会增加数据传送的时延。</p>
+<ol start="3">
+<li><strong>p-坚持 CSMA</strong></li>
+</ol>
+<p>用于时分信道。基本思想：一个结点要发送数据，首先侦听信道；如果信道忙就<strong>持续侦听</strong>，直到信道空闲；如果信道空闲，<strong>以概率p发送数据</strong>，以概率1-p推迟到下一个时隙；如果下一个时隙信道仍然空闲，仍以概率p发送数据，以概率1-p推迟到下一个时隙。这个过程一直持续到数据发送成功或检测到信道繁忙为止。</p>
+<p>这样的方法能降低多个结点检测到信道空闲后同时发送数据的冲突概率；采取侦听是为了克服非坚持CSMA协议中由于随机等待而造成延迟时间较长的缺点。</p>
+<p><strong>CSMA/CD协议</strong></p>
+<p>载波侦听多路访问/<strong>碰撞检测</strong>(Collision Detection)协议是CSMA协议的改进方案，适用于总线型网络或半双工网络。一般用于<strong>有线局域网</strong>，如以太网Ethernet。</p>
+<p>载波侦听就是发送前侦听总线上是否有其他数据在发送，如果有就暂时不发送，等到信道空闲再发送。碰撞检测就是<strong>边发送边侦听</strong>，适配器一边发送数据一边检测信道上信号电压的变化情况。</p>
+<p>CSMA/CD的工作流程概括为：<strong>先听后发，边听边发，冲突停发，随机重发</strong>。具体工作流程如下：</p>
+<ul>
+<li>适配器从网络层获得一个分组，封装成以太网帧，放入适配器缓存，准备发送。</li>
+<li>适配器侦听到信道空闲，开始发送该帧；如果侦听到信道忙，则持续侦听到信道上没有信号能量，然后发送帧。</li>
+<li>发送过程中，适配器持续检测信道，如果一直未检测到碰撞，则成功发送完毕；如果检测到碰撞，则中止发送数据，并发送一个拥塞信号，让所有用户都知道。</li>
+<li>中止发送后，适配器执行<strong>指数退避算法</strong>，等待一段随机时间后返回第二步。</li>
+</ul>
+<p>CSMA/CD中的站不可能同时进行发送和接收，因此采用该协议的以太网只能进行<strong>半双工通信</strong>。</p>
+<blockquote>
+<p>半双工（half-duplex）：允许两台设备之间双向传输数据，但不能同时进行。</p>
+<p>全双工（full-duplex）：允许两台设备同时进行双向传输。</p>
+</blockquote>
+<p>把以太网端到端往返时间$2\tau$称为<strong>争用期</strong>（又称冲突窗口或碰撞窗口），每个站在发送数据后，经过争用期这段时间后还未检测到碰撞，则确定这次发送不会碰撞。</p>
+<p>为了确保发送站在发送数据的同时能检测到可能存在的碰撞，需要在发送完帧之前就能收到自己发送出去的数据，即帧的传输时延至少要两倍于信号在总线中的传播时延，所以CSMA/CD总线网中所有数据帧都要大于一个<strong>最小帧长</strong>：</p>
+<p><strong>最小帧长=总线传播时延*数据传输速率*2</strong></p>
+<p>如果发生冲突，则一定在最小帧长发送的时间范围内，以太网中凡是小于最小帧长的帧都被判定为无效帧，收到这种帧时要立即丢弃。</p>
+<p>除了检测冲突外，CSMA/CD还能从冲突中恢复，一旦发生冲突，再次立即发送是没有意义的。这里采用<strong>二进制指数退避算法</strong>来解决碰撞问题：</p>
+<ul>
+<li>确定基本退避时间，一般取争用期时间$2\tau$</li>
+<li>定义参数k，它等于重传次数，但不超过10，即$k=\min [重传次数, 10]$，当重传次数不超过10，k为重传次数；当重传次数大于10时，k就不再增加，一直等于10</li>
+<li>从离散整数集合$[0,1,...,2^k-1]$中随机取出一个数r，重传所需的退避时间就是r倍的基本退避时间，即$2r\tau$</li>
+<li>当重传达到16次仍然不能成功，说明<strong>网络太拥挤</strong>，认为此帧<strong>永远无法正确发出</strong>，抛弃此帧并<strong>向高层报告</strong>。</li>
+</ul>
+<p>该方法能够使重传所需的推迟的平均时间随着重传次数的增大而增大，能够降低发生碰撞的概率，利于系统稳定。</p>
+<p><strong>CSMA/CA协议</strong></p>
+<p>载波侦听多路访问/<strong>碰撞避免</strong>(Collision Avoidance)协议，用于无线局域网802.11。</p>
+<p>CSMA/CD把碰撞检测改为了<strong>碰撞避免</strong>，指的是设计者要尽量降低发生碰撞的概率。相比于CSMA/CA作出这样的修改主要有以下原因：</p>
+<ul>
+<li>无线网络接收信号的强度往往小于发送信号的强度，且在无线介质上信号强度的动态变化范围很大，<strong>实现碰撞检测的代价较大</strong>。</li>
+<li>无线通信中，并非所有站点都能听见对方，存在<strong>隐蔽站</strong>问题。</li>
+</ul>
+<p>无线信道的质量远不如有线通信，802.11使用链路层<strong>确认/重传(ARQ)方案</strong>，站点每次通过无线局域网发送完一帧，都要在收到对方的确认帧后才能发送下一帧。</p>
+<p>为避免碰撞，802.11规定所有站发送完成后，必须再等待一段很短的时间（继续监听）才能发送下一帧，这段时间称为<strong>帧间间隔IFS</strong>，长短取决于要发送帧的类型。802.11使用以下三种IFS：</p>
+<ul>
+<li>SIFS（短IFS）：用于<strong>分隔属于一次对话的各帧</strong>，使用SIFS的帧类型有：ACK帧、CTS帧、分片后的数据帧、回答AP探询的帧</li>
+<li>PIFS（点协调IFS）：中等长度的IFS，在<strong>PCF操作</strong>中使用</li>
+<li>DIFS（分布式协调IFS）：最长的IFS，用于<strong>异步帧竞争访问</strong>的时延</li>
+</ul>
+<p>CSMA/CA的退避算法与CSMA/CD的稍有不同。信道从忙态变为空闲时，任何一个站都要发送数据帧，不仅都要等待一个时间间隔，而且要进入争用窗口，计算随机退避时间以便再次试图接入信道，降低了碰撞发生的概率。</p>
+<p>当且仅当检测到信道空闲并且这个数据帧是要发送的第一个数据帧时，才不使用退避算法。其他情况都要使用退避算法。具体为：发送第一个帧前检测到信道忙；每次重传；每次发送成功后发送下一个帧。</p>
+<p>另：<strong>处理隐蔽站问题：RTS和CTS</strong></p>
+<p>两个站A和B都在AP的覆盖范围内，但二者相距较远，彼此听不到对方。当A和B都检测到信道冲突时，都向AP发送数据，导致发生碰撞，这就是隐蔽站问题。</p>
+<p>为了避免该问题，802.11允许发送站<strong>对信道进行预约</strong>，源站发送数据帧前先广播一个<strong>短请求发送RTS控制帧</strong>，其中包括源地址、目的地址和这个通信所持续的时间，该帧能被范围内包括AP在内的所有站点听到。如果信道空闲，则AP广播一个<strong>允许发送CTS控制帧</strong>，其中包括从RTS帧复制的通信所需时间，该帧也能发送到包括A和B在内的所有站点。B和其他站点听到CTS后，在CTS帧指明的时间范围内将<strong>抑制发送</strong>。CTS帧有两个目的：给源站明确发送的许可；指示其他站点在预约期内不要发送。</p>
+<p>这种机制绘制的网络效率有所下降，但这两种帧都很短，与数据帧相比开销不大；如果不使用这种帧，一旦发生碰撞则导致帧重发，浪费的时间更多。</p>
+<h3 id="轮询访问令牌传递协议"><a class="header" href="#轮询访问令牌传递协议">轮询访问：令牌传递协议</a></h3>
+<p>轮询访问中，用户不能随机地发送信息，要通过一个集中控制的监控站，以循环方式轮询每个结点，再决定信道的分配。当某个结点在使用信道时，其他结点都不能使用信道。令牌传递协议主要用于<strong>令牌环局域网</strong>中。</p>
+<p>一个令牌在各结点间以某个固定次序交换。</p>
+<p>该协议适合<strong>负载很高</strong>的广播信道，即多个结点在同一时刻发送数据概率很大的信道。</p>
+<h2 id="局域网"><a class="header" href="#局域网">局域网</a></h2>
+<h3 id="体系结构"><a class="header" href="#体系结构">体系结构</a></h3>
+<p>在一个较小范围内（例如一个学校）通过双绞线等介质把计算机、外部设备等连接起来，组成互联网络。</p>
+<p>局域网的特性主要由：拓扑结构、传输介质、介质访问控制方式组成。</p>
+<ul>
+<li>常见拓扑：星形、环形、总线形、星形和总线形混合</li>
+<li>传输介质：双绞线、铜缆、光纤</li>
+<li>介质访问控制：CSMA/CD、令牌总线、令牌环</li>
+</ul>
+<h3 id="以太网和8023"><a class="header" href="#以太网和8023">以太网和802.3</a></h3>
+<p>以太网采用<strong>总线形</strong>拓扑，所有计算机共享一条总线，信息以广播方式发送。以太网简化了通信流程并使用CSMA/CD方式进行访问控制。</p>
+<p>简化通信的措施：</p>
+<ul>
+<li>采用无连接的工作方式，不对数据帧进行编码，不要求接收方发送确认，尽最大努力交付，提供不可靠服务，对于差错纠正由高层完成</li>
+<li>发送的数据使用曼彻斯特编码，每个码元的中间出现一次电压转换，接收端利用这种方式能很快地提取出位同步信号。</li>
+</ul>
+<blockquote>
+<p>曼彻斯特编码：从高电平到低电平的跳变代表1，而从低电平到高电平的跳变代表0。信号的保持不会超过一个比特位的时间间隔。即使是0或1的序列，信号也将在每个时间间隔的中间发生跳变。这种跳变将允许接收设备的时钟与发送设备的时钟保持一致。</p>
+</blockquote>
+<p><strong>以太网传输介质与网卡</strong></p>
+<p>常用传输介质：粗缆、细缆、双绞线和光纤</p>
+<table><thead><tr><th align="center">参数</th><th align="center">10BASE5</th><th align="center">10BASE2</th><th align="center">10BASE-T</th><th align="center">10BASE-FL</th></tr></thead><tbody>
+<tr><td align="center">传输媒体</td><td align="center">粗缆</td><td align="center">细缆</td><td align="center">非屏蔽双绞线</td><td align="center">光纤对</td></tr>
+<tr><td align="center">编码</td><td align="center">曼彻斯特编码</td><td align="center">曼彻斯特编码</td><td align="center">曼彻斯特编码</td><td align="center">曼彻斯特编码</td></tr>
+<tr><td align="center">拓扑结构</td><td align="center">总线形</td><td align="center">总线形</td><td align="center">星形</td><td align="center">点对点</td></tr>
+<tr><td align="center">最大段长</td><td align="center">500m</td><td align="center">185m</td><td align="center">100m</td><td align="center">2000m</td></tr>
+<tr><td align="center">最多结点数目</td><td align="center">100</td><td align="center">30</td><td align="center">2</td><td align="center">2</td></tr>
+</tbody></table>
+<p>计算机与外界局域网通过网卡（适配器）相连，每个适配器都有唯一的MAC地址。</p>
+<p><strong>MAC帧</strong></p>
+<p>长6字节，由分隔的12个十六进制数组成。</p>
+<p>以太网帧格式有Ethernet V2和802.3两种。这里介绍V2：</p>
+<p><strong>高速以太网</strong></p>
+<h3 id="ieee-80211"><a class="header" href="#ieee-80211">IEEE 802.11</a></h3>
+<p>无线局域网可分为两类：有固定基础设施无线局域网和无固定设施移动自组织网络。固定设施指固定的基站。</p>
+<h3 id="令牌环网"><a class="header" href="#令牌环网">令牌环网</a></h3>
+<p>令牌环网的每一站通过电缆与环接口干线耦合器TCU相连。TCU的主要作用是传递所有经过的帧，为接入站发送和接收数据提供接口。与此对应的TCU的状态也有两个：收听状态和发送状态。</p>
+<h2 id="广域网"><a class="header" href="#广域网">广域网</a></h2>
+<h3 id="基本概念"><a class="header" href="#基本概念">基本概念</a></h3>
+<p>覆盖范围很广（远超一个城市的范围）的长距离网络。连接广域网的各结点交换机的链路都是高速链路，它可以是长达几千公里的光缆线路，也可以是长达几万米的点对点卫星链路。广域网首要考虑的问题是通信容量足够大。</p>
+<p>广域网由一些结点交换机及连接这些交换机的链路组成。结点交换机的功能是将分组存储并转发。结点之间都是点到点连接。为了提高可靠性，通过一个结点交换机与多个结点交换机连接。</p>
+<p>广域网使用的协议主要在网络层。</p>
+<h3 id="ppp协议"><a class="header" href="#ppp协议">PPP协议</a></h3>
+<p>Point-to-Point Protocal，是使用串行线路通信的<strong>面向字节</strong>的而协议，该协议应用在直接连接的两个结点的链路上。</p>
+<h3 id="hdlc协议"><a class="header" href="#hdlc协议">HDLC协议</a></h3>
+<p>高级数据链路控制协议（High-level Data Link Control）是ISO制定的<strong>面向比特</strong>的数据链路层协议。该协议不依赖于任何一种字符编码集；数据报文可透明传输，用于透明传输的<strong>0比特插入法</strong>易于硬件实现。</p>
+<h2 id="数据链路层设备"><a class="header" href="#数据链路层设备">数据链路层设备</a></h2>
+<h3 id="以太网交换机"><a class="header" href="#以太网交换机">以太网交换机</a></h3>
+<p>是一个多端口的网桥，工作在数据链路层。交换机能经济地将网络分成小的冲突域，为每个工作站提供更高的带宽。</p>
+<p>以太网交换机还能方便地实现虚拟局域网VLAN，VLAN不仅能隔离冲突域，还能隔离广播域。</p>
+<p><strong>原理</strong></p>
+<p>检测从以太端口来的源和目的地的MAC地址，然后与系统内的动态查找表进行比较，若数据帧的源MAC地址不在查找表中，则将该地址加入查找表，并将数据帧发送给响应目的端口。</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>每个端口直接与单台主机相连，工作在全双工。</li>
+<li>以太网交换机同时连接多对端口，每对端口连接的主机都能无碰撞地传输数据。</li>
+<li>是一种即插即用设备。</li>
+<li>使用ASIC，交换速度快</li>
+</ul>
+<p><strong>两种交换模式</strong></p>
+<p>直通式和存储转法式。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机网络/CH02-物理层.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/计算机网络/CH04-网络层.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机网络/CH02-物理层.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/计算机网络/CH04-网络层.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

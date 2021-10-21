@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH01-操作系统概述 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html" class="active"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="基本概念"><a class="header" href="#基本概念">基本概念</a></h2>
+<h3 id="操作系统概念"><a class="header" href="#操作系统概念">操作系统概念</a></h3>
+<p>计算机系统自下而上分为4部分：硬件、操作系统、应用程序和用户</p>
+<p>硬件提供基本的计算资源；应用程序规定用何种方式使用这些资源来解决用户的计算问题；操作系统<strong>控制和协调</strong>各用户的应用程序对硬件的分配和使用。</p>
+<h3 id="特征"><a class="header" href="#特征">特征</a></h3>
+<p>并发</p>
+<p>共享：互斥共享方式、同时访问共享方式</p>
+<p>虚拟：虚拟CPU、虚拟存储器、虚拟I/O设备</p>
+<p>异步：多道程序环境允许多个程序并发执行，进程的执行不是一贯到底，而是走走停停，以不可预测的速度向前推进。</p>
+<h3 id="目标和功能"><a class="header" href="#目标和功能">目标和功能</a></h3>
+<p><strong>作为计算机系统资源的管理者</strong></p>
+<p>处理机、存储器、文件、设备管理</p>
+<p><strong>作为用户与计算机硬件系统之间的接口</strong></p>
+<ul>
+<li>命令接口：使用命令接口进行作业控制的主要方式有两种：联机控制和脱机控制
+<ul>
+<li>联机命令接口：交互式命令接口，适用于分时或实时操作系统，由一组键盘操作命令组成。</li>
+<li>脱机命令接口：批处理命令接口，适用于批处理系统，由一组作业控制命令组成，脱机用户不能直接干预作业的运行。</li>
+</ul>
+</li>
+<li>程序接口：由一组系统调用(广义指令)组成，用户通过在程序中使用这些系统调用来请求操作系统为其提供服务，如使用各种外部设备、申请分配和回收内存等；</li>
+</ul>
+<p><strong>操作系统作为扩充机器</strong></p>
+<h2 id="操作系统的发展和分类"><a class="header" href="#操作系统的发展和分类">操作系统的发展和分类</a></h2>
+<h3 id="手工操作阶段"><a class="header" href="#手工操作阶段">手工操作阶段</a></h3>
+<p>计算机上的所有工作都要人工干预，如程序的装入、运行、结果的输出。</p>
+<p>缺点：用户独占全机，资源利用率低；CPU利用不充分</p>
+<h3 id="批处理阶段"><a class="header" href="#批处理阶段">批处理阶段</a></h3>
+<p><strong>单道批处理系统</strong></p>
+<p>系统对作业的处理是成批进行的但内存中始终保持一道作业。</p>
+<ul>
+<li>自动性：磁带上的一批作业能自动逐个运行，无须人工干预</li>
+<li>顺序性：磁带上的各道作业顺序地进入内存，各道作业地完成顺序与它们进入内存的顺序在正常状态下完全相同</li>
+<li>单道性：内存中只有一道程序运行</li>
+</ul>
+<p>问题：内存中仅放入一道作业，每当它在运行期间发出I/O请求后，高速CPU便处于等待低速I/O完成的状态。</p>
+<p><strong>多道批处理系统</strong></p>
+<p>允许多个程序同时进入内存并允许它们在CPU中交替地运行，这些程序共享系统中的各种软硬件资源。</p>
+<p>当一道程序因I/O请求而暂停运行时，CPU便立即转去运行另一道程序。</p>
+<p>多道程序设计的特点：</p>
+<ul>
+<li>多道：计算机内存中同时存放多道相互独立的程序</li>
+<li>宏观上并行</li>
+<li>微观上串行</li>
+</ul>
+<p>多道批处理系统把用户提交的作业成批地送进计算机内存，然后由作业调度程序自动地选择作业运行</p>
+<p>优点：资源利用率高，系统吞吐量大。</p>
+<p>缺点：用户相应时间较长，不能提供人机交互能力，用户既不能了解自己的程序的运行情况，又不能控制计算机。</p>
+<h3 id="分时操作系统"><a class="header" href="#分时操作系统">分时操作系统</a></h3>
+<p>分时是指把处理器的运行时间分成很短的时间片，按时间片把处理器分配给各联机作业使用。多个用户通过终端共享一台主机，用户可以与主机进行交互操作而互不干扰。</p>
+<p>分时系统相比于多道批处理系统能够人机交互功能。</p>
+<p>分时系统主要有以下特征：</p>
+<ul>
+<li>同时性：允许多个终端同时使用一台计算机</li>
+<li>交互性：用户能够方便地与系统进行人机对话</li>
+<li>独立性：系统中多个用户可以彼此独立地进行操作</li>
+<li>及时性：用户请求能在很短时间内获得响应</li>
+</ul>
+<h3 id="实时操作系统"><a class="header" href="#实时操作系统">实时操作系统</a></h3>
+<p>为了能够在某个时间限制内完成某些紧急任务而不需要时间片排队。</p>
+<ul>
+<li>
+<p>硬实时系统：某个动作必须绝对地在规定的时刻发生</p>
+</li>
+<li>
+<p>软实时系统：能够接受偶尔违反时间规定且不会引起任何永久性的损害，例如飞机订票系统等</p>
+</li>
+</ul>
+<h2 id="操作系统的运行环境"><a class="header" href="#操作系统的运行环境">操作系统的运行环境</a></h2>
+<h3 id="运行机制"><a class="header" href="#运行机制">运行机制</a></h3>
+<p>CPU的状态划分为<strong>用户态</strong>和<strong>核心态</strong>。用户自编程序运行在用户态，操作系统内核程序运行在核心态。</p>
+<p>现代操作系统都是层次式的结构；一些与硬件关联较为紧密的模块，例如时钟管理、中断处理、设备驱动等处于最底层；其次是运行频率较高的程序，如进程管理、存储器管理和设备管理。这两部分内容构成了操作系统的内核，这部分内容的指令操作工作在核心态。</p>
+<p><strong>时钟管理</strong></p>
+<p>时钟的第一个功能是计时，操作系统需要通过时钟管理，向用户提供标准的系统时间。另外通过时钟中断的管理，可以实现进程的切换。</p>
+<p><strong>中断机制</strong></p>
+<p>中断最初是为了提供多道程序运行环境中CPU的利用率，主要针对外部设备。后来逐步发展形成多种类型，成为操作系统各项操作的基础；例如键盘鼠标的输入、进程管理调度等等。</p>
+<p>中断机制中只有一小部分功能属于内核，负责保护和恢复中断线程的信息，转移控制权到相关处理程序。这样可以减少中断的处理时间，提高系统并行处理能力。</p>
+<p><strong>原语</strong></p>
+<p>操作系统底层有一些可被调用的公用小程序，各自完成一个对丁操作，特点如下：</p>
+<ul>
+<li>处于操作系统最底层，接近于硬件</li>
+<li>这些程序具有原子性，其操作能一气呵成</li>
+<li>这些程序的运行时间较短，且调用频繁</li>
+</ul>
+<p>把具有这些特点的程序称为原语。定义原语的直接方法是关闭中断，让所有动作完成后再打开中断。</p>
+<p><strong>系统控制的数据结构及处理</strong></p>
+<p>系统中用于登记状态信息的数据结构很多，如作业控制块、设备控制块、消息队列、缓冲区等。为了实现有效管理，系统需要以下一些基本操作：</p>
+<ul>
+<li>进程管理</li>
+<li>存储器管理</li>
+<li>设备管理</li>
+</ul>
+<h3 id="中断和异常"><a class="header" href="#中断和异常">中断和异常</a></h3>
+<p>发生中断或异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的。中断用来提高系统资源利用率，在程序未使用某种资源时，把它对那种资源的占有权释放。</p>
+<p><strong>中断和异常的定义</strong></p>
+<p>中断也称为<strong>外中断</strong>，指来自CPU执行指令以外的时间的发生，如设备发出的I/O结束中断，表示设备输入输出已经完成。这一类中断通常是与当前指令执行无关的事件，即它们与当前处理机运行的程序无关。</p>
+<p>异常也称为<strong>内中断</strong>，指源自CPU执行指令内部的事件，如程序的非法操作码、地址越界等等。对于异常的处理一般依赖于当前程序的运行线程，异常不能被屏蔽，一旦出现应该立即处理。</p>
+<p><strong>中断(外中断)处理的过程</strong></p>
+<ul>
+<li>关中断：CPU响应中断后，首先要保护程序的现场状态；若现场保存不完整，当中断服务程序结束后就不能正确恢复并继续执行现行程序。</li>
+<li>保存断点：将原来的程序的断点（程序计数器PC）保存起来，使得中断结束后能正确返回到原来程序。</li>
+<li>中断服务程序寻址：取出中断服务程序地址送入程序计数器PC。</li>
+<li>保存现场和屏蔽字：进入中断服务程序后，首先要保存现场信息，一般指程序状态字寄存器PSWR和某些通用寄存器的内容。</li>
+<li>开中断：允许更高级中断请求得到响应</li>
+<li>执行中断服务程序</li>
+<li>关中断</li>
+<li>恢复现场和屏蔽字</li>
+<li>开中断，中断返回：中断服务程序的最后一条指令一般是中断返回指令，使其返回到原程序的断点处，以便继续执行原程序。</li>
+</ul>
+<h3 id="系统调用"><a class="header" href="#系统调用">系统调用</a></h3>
+<p>用户在程序中调用一些操作系统提供的子功能，系统调用可视为特殊的公共子程序。</p>
+<p>一个操作系统提供的系统调用命令可以分为以下几类：</p>
+<ul>
+<li>设备管理：完成设备的请求或释放</li>
+<li>文件管理：完成文件的读、写、创建及删除</li>
+<li>进程控制：完成进程创建、撤销、阻塞等</li>
+<li>进程通信：完成进程之间的消息传递或信号传递</li>
+<li>内存管理：完成内存的分配、回收等</li>
+</ul>
+<p>系统调用的处理需要由操作系统内核程序负责完成，运行在<strong>内核态</strong>。</p>
+<p>用户程序可以执行**陷入指令(又称访管指令)**来发起系统调用，请求操作系统提供服务。相当于用户程序把CPU的主动权交给操作系统内核程序，之后操作系统内核对系统调用请求作出响应，处理完成后内核又把CPU使用权交给用户程序。这么设计是为了让用户程序不能直接执行对系统影响非常大的操作，必须通过系统调用的方式请求操作系统代为操作。</p>
+<p>操作系统层面关心的是系统核心态和用户态的软件实现与切换。</p>
+<h2 id="操作系统的体系结构"><a class="header" href="#操作系统的体系结构">操作系统的体系结构</a></h2>
+<h3 id="大内核和微内核"><a class="header" href="#大内核和微内核">大内核和微内核</a></h3>
+<p>大内核将操作系统的主要功能模块都作为一个紧密联系的整体运行在核心态，从而为应用提供高性能的系统服务。因为各管理模块之间共享信息，能够有效利用相互之间的有效特性，具有无可比拟的性能优势。</p>
+<p>微内核是为了解决操作系统的内核代码难以维护的问题，将内核中最基本的功能保留在内核，将那些不需要再核心态执行的功能移到用户态执行，降低了内核的设计复杂性。微内核有效分离了内核与服务、服务与服务，使得它们之间的接口更加清晰，降低了维护代价。</p>
+<p>微内核最大的问题是性能，需要频繁地在用户态和核心态之间切换，系统的执行开销偏大。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/操作系统/0_408操作系统概览.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/操作系统/CH02-进程管理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/操作系统/0_408操作系统概览.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/操作系统/CH02-进程管理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

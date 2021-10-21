@@ -1,0 +1,468 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH03-栈_队列_数组 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html" class="active"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="栈"><a class="header" href="#栈">栈</a></h2>
+<h3 id="基本概念"><a class="header" href="#基本概念">基本概念</a></h3>
+<p><strong>定义</strong></p>
+<p>栈（stack）是只允许在一端插入或删除操作的线性表。</p>
+<ul>
+<li>栈顶：允许进行插入删除的那一端</li>
+<li>栈底：不允许进行插入删除操作的另一端，是固定的</li>
+</ul>
+<p>栈的特性可以概括为<strong>后进先出</strong></p>
+<p><strong>栈的基本操作</strong></p>
+<ul>
+<li><code>InitStack(&amp;S)</code>：初始化一个空栈S</li>
+<li><code>StackEmpty(S)</code>：判断一个栈是否为空</li>
+<li><code>Push(&amp;S, x)</code>：进栈，若栈S未满，将x加入使之称为新栈顶</li>
+<li><code>Pop(&amp;S, &amp;x)</code>：出栈，若栈S非空，则弹出栈顶元素，用x返回</li>
+<li><code>GetTop(S, &amp;x)</code>：读栈顶元素</li>
+<li><code>DestroyStack(&amp;S)</code>：销毁栈S，并释放其占用的内存</li>
+</ul>
+<p>解答算法题时，一般可以直接使用这些基本函数。</p>
+<h3 id="顺序存储结构"><a class="header" href="#顺序存储结构">顺序存储结构</a></h3>
+<p><strong>顺序栈的实现</strong></p>
+<p>利用一组地址连续的存储单元存放<strong>自栈底到栈顶</strong>的数据元素，同时附设一个指针(top)指示当前栈顶元素。</p>
+<pre><code class="language-c">#define MaxSize 50	//定义栈中最大元素个数
+typedef struct{
+	Elemtype data[MaxSize];	//存放栈中元素
+	int top;	//栈顶指针
+} SqStack;
+</code></pre>
+<ul>
+<li>栈顶指针：<strong>S.top</strong>，初始时设置为-1；栈顶元素：<code>S.data[S.top]</code></li>
+<li>进栈操作：栈不满时，栈顶指针先加1，再送值到栈顶元素</li>
+<li>出栈操作：栈非空时，先取栈顶元素值，再将栈顶指针减去1</li>
+<li>栈空条件：<code>S.top=-1</code>；栈满条件：<code>S.top=MaxSize-1</code>；栈长：<code>S.top+1</code></li>
+</ul>
+<p>顺序栈的入栈操作收到数组上界的约束，要注意可能发生的栈溢出。</p>
+<p><strong>顺序栈的基本运算</strong></p>
+<ul>
+<li>初始化</li>
+</ul>
+<pre><code class="language-c">void InitStack(SqStack &amp;S){
+	S.top = -1;
+}
+</code></pre>
+<ul>
+<li>判断栈空</li>
+</ul>
+<pre><code class="language-c">bool StackEmpty(SqStack S){
+	if (S.top == -1)
+		return true;
+	else
+		return false;
+}
+</code></pre>
+<ul>
+<li>进栈</li>
+</ul>
+<pre><code class="language-c">bool Push(SqStack &amp;S, ElemType x){
+	if (S.top == MaxSize - 1)
+		return false;
+	S.data[++S.top] = x;
+	return true;
+}
+</code></pre>
+<ul>
+<li>出栈</li>
+</ul>
+<pre><code class="language-c">bool Pop(SqStack &amp;S, ElemType &amp;x){
+	if (S.top == -1)
+		return false;
+	x = S.data[S.top--];	//先出栈，指针再减1
+	return true;
+}
+</code></pre>
+<ul>
+<li>读栈顶元素</li>
+</ul>
+<pre><code class="language-c">bool GetTop (SqStack S, ElemType &amp;x) {
+    if (S.top = -1)
+        return false;
+    x = S.data[S.top];	//取栈顶元素
+    return true;
+}
+</code></pre>
+<p><strong>共享栈</strong></p>
+<p>利用栈底位置相对不变的特定，可以让两个顺序栈共享一个一维数组空间，将两个栈的栈底分别设置在共享空间的两端，两个栈顶向空间的中间延申。</p>
+<h3 id="链式存储结构"><a class="header" href="#链式存储结构">链式存储结构</a></h3>
+<p>链栈的优点是便于<strong>多个栈共享存储空间和提高其效率</strong>，且不存在栈满上溢的情况。通常采用单链表来实现，并且规定所有操作在单链表的<strong>表头</strong>完成。</p>
+<p>这里规定链栈没有头结点，Lhead指向栈顶元素。</p>
+<pre><code class="language-c">typedef struct Linknode{
+	ElemType data;			//数据域
+	struct Linknode *next;	//指针域
+} *LiStack;		//栈类型定义
+</code></pre>
+<p>链栈操作与链表类似，入栈和出栈操作都在表头进行。</p>
+<h2 id="队列"><a class="header" href="#队列">队列</a></h2>
+<h3 id="基本概念-1"><a class="header" href="#基本概念-1">基本概念</a></h3>
+<p><strong>定义</strong></p>
+<p>也是一种受限的线性表，只允许在<strong>表的一端进行插入</strong>，而在<strong>另一端进行删除</strong>。向队列中插入元素称为<strong>入队</strong>，删除元素称为<strong>出队</strong>。操作特性是<strong>先进先出</strong>。</p>
+<p><strong>基本操作</strong></p>
+<ul>
+<li><code>InitQueue(&amp;Q)</code>：初始化队列，构造一个空队列</li>
+<li><code>QueueEmpty(Q)</code>：判断队列是否为空</li>
+<li><code>EnQueue(&amp;Q, x)</code>：入队，若队列未满，将x加入，使之称为新队列</li>
+<li><code>DeQueue(&amp;Q, &amp;x)</code>：出队，若队列非空，删除队头元素并用x返回</li>
+<li><code>GetHead(Q, &amp;x)</code>：读队头元素，若队列Q非空，则将队头元素赋值给x</li>
+</ul>
+<h3 id="顺序存储结构-1"><a class="header" href="#顺序存储结构-1">顺序存储结构</a></h3>
+<p><strong>队列的顺序存储</strong></p>
+<p>分配一块连续的存储单元存放队列中的元素，并附设两个指针：</p>
+<ul>
+<li>队头指针front：指向队头元素</li>
+<li>队尾指针rear：指向队尾元素的下一个位置</li>
+</ul>
+<p>（不同教材对front和rear的定义可能不一样）</p>
+<pre><code class="language-c">#define MaxSize 50
+typedef struct{
+	ElemType data[MaxSize];	//存放队列元素
+	int front, rear;	//两个指针
+} SqQueue;
+</code></pre>
+<p>初始状态（队空条件）：<code>Q.front == Q.rear == 0</code></p>
+<p>进队操作：队不满时，先送值到队尾元素，再将队尾指针加一</p>
+<p>出队操作：队不空时，先取队头元素，再将队头指针加一</p>
+<p>不能用<code>Q.rear==MaxSize</code>作为队列满的条件。当队列中正好有一个元素并且放在队尾所在的存储单元时，这时为上溢出，但并不是真正的溢出。</p>
+<p><strong>循环队列</strong></p>
+<p>把存储队列元素的表从逻辑上视为一个环，称为循环队列。当队首指针<code>Q.front=MaxSize-1</code>后，再前进一个位置就自动到0，这可以用除法取余运算(%)实现。</p>
+<ul>
+<li>
+<p>初始时：<code>Q.front=Q.rear=0</code></p>
+</li>
+<li>
+<p>队首指针进1：<code>Q.front=(Q.front+1)%MaxSize</code></p>
+</li>
+<li>
+<p>队尾指针进1：<code>Q.rear=(Q.rear+1)%MaxSize</code></p>
+</li>
+<li>
+<p>队列长度：<code>(Q.rear+MaxSize-Q.front)%MaxSize</code></p>
+</li>
+<li>
+<p>出队入队时：指针按顺时针发方向进1</p>
+</li>
+</ul>
+<p>区分队空队满的方法：</p>
+<ul>
+<li>牺牲一个存储单元来区分队空和队满，入队时少用一个队列单元。约定以队头指针在队尾指针的下一个位置作为队满的标志。
+<ul>
+<li>队满条件：(Q.rear+1)%MaxSize==Q.front</li>
+<li>队空条件：Q.front=Q.rear</li>
+<li>队列中元素个数：(Q.rear+MaxSize-Q.front)%MaxSize</li>
+</ul>
+</li>
+<li>类型中增设表示元素个数的数据成员size，这样空队条件：Q.size==0；队满条件：Q.size==MaxSize</li>
+<li>类型中增设tag数据成员，来区分是队满还是队空。</li>
+</ul>
+<p><strong>循环队列的操作</strong></p>
+<ul>
+<li>初始化：</li>
+</ul>
+<pre><code class="language-c">void InitQueue(SqQueue &amp;Q){
+	Q.rear=Q.front=0;
+}
+</code></pre>
+<ul>
+<li>判断队空</li>
+</ul>
+<pre><code class="language-c">bool isEmpty(SqQueue Q){
+	if(Q.rear==Q.front)		return true;
+	else return false;
+}
+</code></pre>
+<ul>
+<li>入队</li>
+</ul>
+<pre><code class="language-c">bool EnQueue(SqQueue &amp;Q, ElemType x){
+	if((Q.rear+1)%MaxSize==Q.front)		return false;	//队满则报错
+	Q.data[Q.rear]=x;
+	Q.rear = (Q.rear+1)%MaxSize;	//队尾指针加一取模
+	return true;
+}
+</code></pre>
+<ul>
+<li>出队</li>
+</ul>
+<pre><code class="language-c">bool DeQueue(SqQueue &amp;Q, ElemType &amp;x){
+	if (Q.rear == Q.front)	return false;
+	x = Q.data[Q.front];
+	Q.front = (Q.front + 1) % MaxSize;
+	return true;
+}
+</code></pre>
+<h3 id="链式存储结构-1"><a class="header" href="#链式存储结构-1">链式存储结构</a></h3>
+<p><strong>队列的链式存储</strong></p>
+<p>链队列；是一个同时带有队头指针和队尾指针的单链表。头指针指向队头结点，尾指针指向队尾结点，即单链表的最后一个结点（与顺序存储不同）。</p>
+<pre><code class="language-c">typedef struct{		//链式队列结点
+	ElemType data;
+	struct LinkNode *next;
+} LinkNode;
+typedef struct{		//链式队列
+	LinkNode *front, *rear;	//队头和队尾指针
+} LinkQueue;
+</code></pre>
+<p>当Q.front==NULL且Q.rear==NULL时，链式队列为空。</p>
+<p>链式队列通常都设计为<strong>带头结点</strong>的单链表。这样插入和删除操作就统一了。</p>
+<p>用单链表表示的链式队列适合于数据元素变动比较大的情形，而且不存在队列满且产生溢出的问题。</p>
+<p><strong>链式队列的基本操作</strong></p>
+<p>初始化、判空队、入队、出队。</p>
+<h3 id="双端队列"><a class="header" href="#双端队列">双端队列</a></h3>
+<p>允许<strong>两端</strong>都可以进行<strong>入队和出队操作</strong>的队列。元素的逻辑结构仍是线性的，将队列的两端分别称为前端和后端，两端都可以入队和出队。</p>
+<ul>
+<li>
+<p>输出受限的双端队列：允许在一端进行插入和删除，另一端只允许插入的双端队列。</p>
+</li>
+<li>
+<p>输入受限的双端队列：允许在一端进行插入和删除，另一端只允许删除的双端队列。</p>
+</li>
+</ul>
+<h2 id="栈和队列的应用"><a class="header" href="#栈和队列的应用">栈和队列的应用</a></h2>
+<h3 id="栈在括号匹配中的应用"><a class="header" href="#栈在括号匹配中的应用">栈在括号匹配中的应用</a></h3>
+<p>表达式中有圆括号和方括号，有着任意的嵌套顺序，([]())为正确的格式，[(])为不正确的格式。</p>
+<p>使用栈的思想来匹配表达式中的括号：</p>
+<ul>
+<li>初始设置一个空栈，顺序读入括号</li>
+<li>若是右括号，则或者使其置于栈顶的最急迫期待得以消解，或是不合法的情况</li>
+<li>若是左括号，则作为一个新的更急迫的期待压入栈中，自然使得原有的在栈中所有未消解的期待的急迫性降了一级。算法结束时，栈为空，否则括号序列不匹配。</li>
+</ul>
+<h3 id="栈在表达式求值中的应用"><a class="header" href="#栈在表达式求值中的应用">栈在表达式求值中的应用</a></h3>
+<p>中缀表达式不仅以来运算符的优先级，还要处理括号。后缀表达式的运算符在操作数的后面，后缀表达式中已经考虑了运算符的优先级，没有括号，只有操作数和运算符。</p>
+<p><strong>中缀表达式转化为后缀表达式</strong>的过程：</p>
+<p>从左向右开始扫描中缀表达式；</p>
+<p>遇到数字时，加入后缀表达式；</p>
+<p>遇到运算符时：</p>
+<ul>
+<li>若为<code>(</code>，入栈</li>
+<li>若为<code>)</code>，则依次把栈中的运算符加入后缀表达式，直到出现<code>(</code>，从栈中删除<code>(</code>；</li>
+<li>若为除括号外的其他运算符，当其优先级高于除<code>(</code>外的栈顶运算符时，直接入栈；否则从栈顶开始，依次弹出比当前处理的运算符优先级高和优先级相等的运算符，直到一个比它优先级低的，或遇到了一个左括号为止。</li>
+</ul>
+<p>当扫描的中缀表达式结束时，栈中的所有运算符依次出栈加入后缀表达式。</p>
+<p>优先级表：</p>
+<table><thead><tr><th align="center">(</th><th align="center">*, /</th><th align="center">+， -</th><th align="center">)</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="center">5</td><td align="center">3</td><td align="center">6</td></tr>
+</tbody></table>
+<p>通过后缀表达式计算值的过程：顺序扫描表达式的每一项，根据其类型做如下操作：若该项是操作数，则压入栈中；若该项是操作符&lt;op&gt;，则连续从栈中退出两个操作数Y和X，形成运算指令X&lt;op&gt;Y，然后将计算结果重新压入栈中。所有项都扫描完后，栈顶存放的就是最终的结果。</p>
+<h3 id="栈在递归中的应用"><a class="header" href="#栈在递归中的应用">栈在递归中的应用</a></h3>
+<p>递归：在一个函数、过程或数据结构的定义中又应用了它自身，则这个函数、过程或数据结构称为是递归定义的。</p>
+<p>递归调用过程中，系统为每一层的<strong>返回点、局部变量、传入实参</strong>等开辟了递归工作栈来进行数据存储，递归次数过多容易造成栈溢出。</p>
+<h3 id="队列在层次遍历中的应用"><a class="header" href="#队列在层次遍历中的应用">队列在层次遍历中的应用</a></h3>
+<p>使用栈来层次遍历二叉树：</p>
+<ul>
+<li>根结点入队；</li>
+<li>若队空，则结束遍历；否则重复下一步的操作；</li>
+<li>队列中的第一个结点出队，并访问之。若其有左孩子，则将左孩子入队；若其有右孩子，则将右孩子入队，返回上一步。</li>
+</ul>
+<h3 id="队列在计算机系统中的应用"><a class="header" href="#队列在计算机系统中的应用">队列在计算机系统中的应用</a></h3>
+<ul>
+<li>解决主机与外部设备之间速度不匹配的问题，例如打印机的数据缓冲区。</li>
+<li>解决由多用户引起的资源竞争问题</li>
+</ul>
+<h2 id="数组和特殊矩阵"><a class="header" href="#数组和特殊矩阵">数组和特殊矩阵</a></h2>
+<h3 id="数组定义"><a class="header" href="#数组定义">数组定义</a></h3>
+<p>数组是由n个相同类型的数据元素构成的有限序列。每个元素的n个线性关系中的序号称为该元素的下标，下标的取值范围称为数组的维界。</p>
+<p>数组是线性表的推广，二维数组可视为其元素也是定长线性表的线性表。数组一旦被定义，其维数和界限就不再改变。除结构的初始化和销毁外，数组只会有存取元素和修改元素的操作。</p>
+<h3 id="数组的存储结构"><a class="header" href="#数组的存储结构">数组的存储结构</a></h3>
+<p>逻辑意义上的数组可采用计算机语言中的数组数据类型进行存储，一个数组的所有元素在内存中占用了一段连续的存储空间。</p>
+<p>对于多维数组，有两种映射方式：<strong>行优先</strong>和<strong>列优先</strong>。</p>
+<p>以二维数组为例，按行优先存储的思想：先行后列，先存储行号较小的元素，行号相等先存储列号较小的元素。</p>
+<h3 id="矩阵的压缩存储"><a class="header" href="#矩阵的压缩存储">矩阵的压缩存储</a></h3>
+<p>压缩存储：为多个<strong>值相同</strong>的元素只分配一个存储空间，对<strong>零元素</strong>不分配存储空间。目的是节省存储空间。</p>
+<p>特殊矩阵：具有许多<strong>相同矩阵元素或零元素</strong>，并且分布具有一定规律性，例如对角矩阵、对称矩阵、上下三角矩阵。</p>
+<p><strong>对称矩阵</strong></p>
+<p>对于一个n阶方阵，其中的元素可划分为3个部分，即上三角区、主对角线和下三角区。</p>
+<p>上下三角区的元素对应相同，因此只存储下三角部分（含对角线）即可，将对称矩阵$A[1...n][1...n]$存放在一维数组$B[n(n+1)/2]$中。</p>
+<p>位于元素$a_{i,j}(i\geq j)$前面的元素个数为：</p>
+<ul>
+<li>第1行：1个元素</li>
+<li>第2行：2个元素</li>
+<li>...</li>
+<li>第i-1行：i-1个元素$(a_{i-1,1},...,a_{i-1,i-1})$</li>
+<li>第i行：j-1个元素$(a_{i,1},a_{i,2},...,a_{i,j-1})$</li>
+</ul>
+<p>则元素$a_{i,j}$在数组B中的下标为：$k=1+2+...+(i-1)+(j-1)=i(i-1)/2+j-1$</p>
+<p>上三角区域将i和j对换即可。</p>
+<p><strong>三角矩阵</strong></p>
+<p>下三角矩阵中，上三角区的所有元素均视为同一常量。存储思想为：在存储完下三角区和主对角线上的元素后，紧接着存储对角线上方的常量一次，故可以将下三角矩阵$A[1...n][1...n]$压缩存放在一维数组$B[n(n+1)/2+1]$中。</p>
+<p>上三角矩阵同理。</p>
+<p><strong>三对角矩阵</strong></p>
+<h3 id="稀疏矩阵"><a class="header" href="#稀疏矩阵">稀疏矩阵</a></h3>
+<p>矩阵中非零元素的个数t，相对矩阵元素的个数s来说非常少，即s&gt;&gt;t的矩阵称为稀疏矩阵。</p>
+<p>常规方法存储稀疏矩阵相当浪费空间，因此仅存储非零元素以及它所在的行和列，构成一个三元组（行标，列标，值），然后按照某种规律存储这些三元组。稀疏矩阵压缩存储后便失去了其随机存取特性。</p>
+<p>三元组可以用数组或十字链表法存储。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/数据结构/CH02-线性表.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/数据结构/CH04-串.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/数据结构/CH02-线性表.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/数据结构/CH04-串.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

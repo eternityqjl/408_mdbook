@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CH05-运输层 - 408详细内容</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../408_note/数据结构/0_408数据结构内容概览.html"><strong aria-hidden="true">1.</strong> 数据结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH01-绪论.html"><strong aria-hidden="true">1.1.</strong> CH01-绪论</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH02-线性表.html"><strong aria-hidden="true">1.2.</strong> CH02-线性表</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH03-栈_队列_数组.html"><strong aria-hidden="true">1.3.</strong> CH03-栈_队列_数组</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH04-串.html"><strong aria-hidden="true">1.4.</strong> CH04-串</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH05-树与二叉树.html"><strong aria-hidden="true">1.5.</strong> CH05-树与二叉树</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH06-图.html"><strong aria-hidden="true">1.6.</strong> CH06-图</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH07-查找.html"><strong aria-hidden="true">1.7.</strong> CH07-查找</a></li><li class="chapter-item expanded "><a href="../../408_note/数据结构/CH08-排序.html"><strong aria-hidden="true">1.8.</strong> CH08-排序</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/0_408组成原理概览.html"><strong aria-hidden="true">2.</strong> 计算机组成原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH01-计算机系统概述.html"><strong aria-hidden="true">2.1.</strong> CH01-计算机系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH02-数据的表示和运算.html"><strong aria-hidden="true">2.2.</strong> CH02-数据的表示和运算</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH03-存储器.html"><strong aria-hidden="true">2.3.</strong> CH03-存储器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH04-指令系统.html"><strong aria-hidden="true">2.4.</strong> CH04-指令系统</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH05-中央处理器.html"><strong aria-hidden="true">2.5.</strong> CH05-中央处理器</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH06-总线.html"><strong aria-hidden="true">2.6.</strong> CH06-总线</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机组成原理/CH07-IO系统.html"><strong aria-hidden="true">2.7.</strong> CH07-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/0_408操作系统概览.html"><strong aria-hidden="true">3.</strong> 操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH01-操作系统概述.html"><strong aria-hidden="true">3.1.</strong> CH01-操作系统概述</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH02-进程管理.html"><strong aria-hidden="true">3.2.</strong> CH02-进程管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH03-内存管理.html"><strong aria-hidden="true">3.3.</strong> CH03-内存管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH04-文件管理.html"><strong aria-hidden="true">3.4.</strong> CH04-文件管理</a></li><li class="chapter-item expanded "><a href="../../408_note/操作系统/CH05-IO系统.html"><strong aria-hidden="true">3.5.</strong> CH05-IO系统</a></li></ol></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/0_408计算机网络概述.html"><strong aria-hidden="true">4.</strong> 计算机网络</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH01-计算机网络体系结构.html"><strong aria-hidden="true">4.1.</strong> CH01-计算机网络体系结构</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH02-物理层.html"><strong aria-hidden="true">4.2.</strong> CH02-物理层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH03-链路层.html"><strong aria-hidden="true">4.3.</strong> CH03-链路层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH04-网络层.html"><strong aria-hidden="true">4.4.</strong> CH04-网络层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH05-运输层.html" class="active"><strong aria-hidden="true">4.5.</strong> CH05-运输层</a></li><li class="chapter-item expanded "><a href="../../408_note/计算机网络/CH06-应用层.html"><strong aria-hidden="true">4.6.</strong> CH06-应用层</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">408详细内容</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="传输层提供的服务"><a class="header" href="#传输层提供的服务">传输层提供的服务</a></h2>
+<h2 id="udp"><a class="header" href="#udp">UDP</a></h2>
+<h3 id="udp数据报"><a class="header" href="#udp数据报">UDP数据报</a></h3>
+<p><strong>概述</strong></p>
+<p>UDP的优点：</p>
+<ul>
+<li>无需建立连接</li>
+<li>无连接状态</li>
+<li>分组首部开销小</li>
+<li>应用层能更好地控制发送的数据和发送时间。UDP没有拥塞控制。</li>
+<li>UDP支持一对一、一对多、多对多的交互通信。</li>
+</ul>
+<p>UDP常用于一次性传输较少数据的网络应用。</p>
+<p><strong>首部格式</strong></p>
+<p>UDP的首部长度为8B。由4个字段组成，每个字段的长度都是2B：</p>
+<ul>
+<li>源端口：源端口号。不需要时可以全0。</li>
+<li>目的端口：目的端口号。终点交付报文时用到。</li>
+<li>长度：UDP数据报的长度（包括首部和数据），所以最小长度为8</li>
+<li>校验和：检测UDP数据报在传输时是否有错。该字段可选，源主机不想校验时令该字段为全0.</li>
+</ul>
+<h3 id="udp校验"><a class="header" href="#udp校验">UDP校验</a></h3>
+<h2 id="tcp"><a class="header" href="#tcp">TCP</a></h2>
+<h3 id="协议特点"><a class="header" href="#协议特点">协议特点</a></h3>
+<ul>
+<li>面向连接</li>
+<li>每条TCP连接只能有两个端点，即点对点连接</li>
+<li>TCP提供可靠交付，保证传送的数据无差错、不丢失、不重复且有序</li>
+<li>TCP提供全双工通信，连接的两端都有发送缓存和接收缓存</li>
+<li>TCP是面向字节流的，即把应用程序发送的数据视为一连串的字节流</li>
+</ul>
+<h3 id="tcp报文段"><a class="header" href="#tcp报文段">TCP报文段</a></h3>
+<p>TCP报文既可以运载数据又可以用来建立连接、释放连接和应答。</p>
+<p>一个TCP报文段分为首部和数据两部分。首部是固定的20B，最后有4N字节的可选项。</p>
+<ul>
+<li>源端口和目的端口：各占2B</li>
+<li>序号：占4B，TCP连接传输的字节流中每个字节都按顺序编号。序号字段指的是本报文段发送的数据的<strong>第一个字节的序号</strong>。</li>
+<li>确认号：占4B，期望收到<strong>对方下一个报文段的第一个数据字节的序号</strong>。若确认号为N，则表示到序号N-1为止的所有数据都已正确收到</li>
+<li>数据偏移：占4位，表示首部长度，单位为32位（4B），即例如该字段的值为15时，达到TCP首部的最大长度60B</li>
+<li>保留：占6位，保留为今后使用，目前应置为0.</li>
+<li>紧急位URG：URG=1时表示紧急指针字段有效。告诉系统此报文段有紧急数据，相当于高优先级。URG需要和紧急指针配合使用，即从数据第一个字节到紧急指针所指的字节就是紧急数据。</li>
+<li>确认位ACK：当ACK=1时确认号字段才有效，为0时无效。</li>
+<li>推送位PSH：接收方TCP收到PSH=1的报文段就尽快交付给应用程序，不再等到整个缓存都填满后再向上交付。</li>
+<li>复位位（RST）：RST=1时表明TCP连接出现严重差错，必须释放连接，重新建立连接</li>
+<li>同步位（SYN）：SYN=1时表示这是一个连接请求或连接接收报文。当SYN=1，ACK=0时是一个请求连接报文，对方若同意建立连接，则应在响应报文中使用SYN=1，ACK=1</li>
+<li>终止位FIN：用来释放一个连接，当FIN=1时表示传输完成，要求释放传输连接</li>
+<li>窗口：占2B，指出现在允许对方发送的数据量，因为接收方的缓存有限</li>
+<li>校验和：占2B，该字段的检验范围包括首部和数据两部分。计算检验和时同样要再前面加上12B的伪首部。</li>
+<li>紧急指针：占2B，指出本报文段中紧急数据共有多少字节。</li>
+<li>选项：长度可变。TCP最初只规定了一种选项：最大报文段长度（MSS），MSS仅仅指出数据段的最大长度</li>
+<li>填充：为了使整个首部长度是4B的整数倍</li>
+</ul>
+<h3 id="tcp连接管理"><a class="header" href="#tcp连接管理">TCP连接管理</a></h3>
+<p><strong>三次握手建立TCP连接</strong></p>
+<ul>
+<li>第一步：客户机的TCP向服务器的TCP发送连接请求报文段。该报文段的同步位<strong>SYN置为1</strong>，同时选择一个初始序号seq=x。SYN报文段不能携带数据，但要消耗掉一个序号。这是客户机进入SYN-SENT同步已发送状态。</li>
+<li>第二步：服务器的TCP收到连接请求后，如果同意建立连接，则向客户机发回确认，并为该TCP分配缓存和变量。在确认报文段中，<strong>SYN和ACK都置为1</strong>，确认号是ack=x+1，同时为自己选择一个初始序号seq=y。确认报文不能携带数据，但也要消耗一个序号。此时服务器进入SYN-RCVD同步收到状态。</li>
+<li>第三步：客户机收到确认报文后，还要向服务器给出确认，并为该TCP连接分配缓存和变量。确认报文段的<strong>ACK置为1</strong>，确认号ack=y+1，序号seq=x+1.该报文段可以携带数据，若不携带则不消耗序号。此时TCP客户进程进入ESTABLISH已建立连接状态。</li>
+</ul>
+<p><strong>四次握手释放TCP连接</strong></p>
+<ul>
+<li>第一步：客户端TCP发送连接释放报文段，并停止发送数据，终止位<strong>FIN置为1</strong>，序号seq=u，等于之前已经传送的数据的最后一个字节的序号加1，FIN报文段即使不携带数据也要消耗一个序号。此时TCP客户机进入FIN-WAIT-1状态。</li>
+<li>第二步：服务器收到连接释放报文后即发出确认，确认号ack=u+1，序号seq=v，等于前面已经传输过的数据的最后一个字节的序号加1.然后服务器进入CLOSE-WAIT状态。此时从客户机到服务器的连接就释放了，TCP连接处于半关闭状态。</li>
+<li>第三步：若服务器已经没有要向客户机发送的数据，就通知TCP释放连接，此时其发出<strong>FIN=1</strong>的连接释放报文段，该报文段的序号为w（在半关闭的时候可能又传输了一些数据），还需重复上次已经发送的确认号ack=u+1.此时服务器进入LAST-ACK状态。</li>
+<li>第四步：客户机收到连接释放报文段后，要发送确认。把确认报文中的<strong>确认位ACK置为1</strong>，确认号ack=w+1，序号seq=u+1。此时连接还未释放，要等到计时器的设置时间2MSL（最长报文寿命）后客户机才进入CLOSED状态。</li>
+</ul>
+<h3 id="tcp可靠传输"><a class="header" href="#tcp可靠传输">TCP可靠传输</a></h3>
+<p><strong>序号</strong></p>
+<p>序号字段用来保证数据能有序提交给应用层。序号建立在字节流之上。</p>
+<p><strong>确认</strong></p>
+<p>TCP首部的确认号是期望收到对方的下一个数据段的数据的第一个字节的序号。</p>
+<p>发送缓冲区会继续存储那些已经发送但未收到的确认报文段，以便在需要时重传。</p>
+<p>TCP默认使用累计确认，即TCP只确认数据流中至第一个丢失字节为止的字节。</p>
+<p><strong>重传</strong></p>
+<p>发生超时和冗余ACK时会导致重传。</p>
+<ul>
+<li>超时：TCP没发送一个报文段，就对该报文段设置一次计时器，如果计时器设置的时间到期还未收到确认，就重传这一报文段。TCP采用一种自适应算法来计算超时重传时间，TCP保留一个往返时间RTT的加权平均值，会随着新测量RTT样本值的变化而变化。重传时间应略大于这个加权平均值。</li>
+<li>冗余ACK：超时重传存在一个问题是超时周期往往太长。发送方通常可以在超时时间发生之前通过冗余ACK检测丢包情况。冗余ACK就是再次确认某个报文段的ACK，发送方先前已经受到过该报文段的确认。当比期望序号大的失序报文段到达时，就发送一个冗余ACK，指明下一个期待字节的序号。TCP规定当发送方收到对同一个报文段的<strong>3个冗余ACK</strong>时，就认为跟在这个被确认报文段后的报文段<strong>已经丢失</strong>。</li>
+</ul>
+<h3 id="tcp流量控制"><a class="header" href="#tcp流量控制">TCP流量控制</a></h3>
+<p>TCP提供流量控制服务来消除发送方（发送速率太快）使得接收方缓存区溢出的可能性。是一个速度匹配服务。</p>
+<p>TCP提供一种基于滑动窗口协议的流量控制机制。</p>
+<p>接收方根据自己接收缓存的大小，动态调整发送方的发送窗口大小，称为<strong>接收窗口rwnd</strong>。即调整TCP报文段首部中窗口字段的值来限制发送方向网络注入报文的速率。同时发送方根据当前网络拥塞程度的估计而却认定窗口值，称为<strong>拥塞窗口cwnd</strong>。</p>
+<p>发送窗口的实际大小取rwnd和cwnd中较小的一个。</p>
+<p>传输层和数据链路层流量控制的区别：传输层定义端到端用户之间的流量控制，数据链路层定义两个中间的相邻结点的流量控制。数据链路层的滑动窗口大小不能动态变化，而传输层可以。</p>
+<h3 id="tcp拥塞控制"><a class="header" href="#tcp拥塞控制">TCP拥塞控制</a></h3>
+<p>拥塞控制是让<strong>网络能够承受现有网络负荷</strong>，是一个全局性的过程，涉及所有主机、路由器。流量控制指点到点的通信量的控制，是一个<strong>端到端</strong>的问题，它所做的是抑制发送端发送数据的速率，以便使得接收端来得及接收。</p>
+<p>因特网标准定义了进行拥塞控制的4种方法：慢开始、拥塞避免、快重传和快恢复。</p>
+<p>发送方既要考虑接收方的接收能力，又要考虑全局网络的拥塞程度，因此TCP协议要求发送方维护两个窗口：</p>
+<ul>
+<li>接收窗口rwnd：接收方根据目前接收缓存的大小所许诺的最新窗口值，反映接收方的容量。由接收方根据其放在TCP首部窗口字段通知发送方。</li>
+<li>拥塞窗口cwnd：发送饭根据自己估算的网络拥塞程度而设置的窗口值，反映当前网络的容量。</li>
+</ul>
+<p>发送窗口的上限值应该取以上两者中较小的一个。</p>
+<p><strong>慢开始算法</strong></p>
+<p>TCP刚建立好连接并开始发送报文段时，先令拥塞窗口cwnd=1，即一个最大报文段长度MSS。每收到<strong>一个对新报文段的确认</strong>后，将cwnd增加1.用这样的方法逐步增大发送方的cwnd，使得分组注入网络的速率更加合理。</p>
+<p>此时拥塞窗口cwnd呈指数式增长，直到增大到一个规定的慢开始门限ssthresh（阈值），然后改用拥塞避免算法。</p>
+<p><strong>拥塞避免算法</strong></p>
+<p>拥塞避免算法让拥塞窗口cwnd缓慢增加，没经过一个往返时延RTT就把发送方的拥塞窗口cwnd加1，使得拥塞窗口按线性规律增加。这比满开始算法的增长速率慢得多。</p>
+<p><strong>网络拥塞处理</strong></p>
+<p>无论在慢开始阶段还是拥塞避免阶段，只要发送方判断网络出现拥塞，就要把慢开始门限ssthresh设置为出现拥塞时的发送方的cwnd值的一半（不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<p>这样能够迅速减少主机发送到网络中的分组数，使得发生拥塞的路由器有足够时间把队列中积压的分组处理完。</p>
+<p>窗口数量变化图见书上P223</p>
+<p><strong>快重传</strong></p>
+<p>是对以上的慢开始和拥塞避免算法的改进。</p>
+<p>前面可靠传输中介绍的冗余ACK也用于网络拥塞的检测。当发送方连续收到3个重复的ACK报文时，直接重传对方尚未收到的报文段，不必等待那个报文段设置的重传计时器超时。</p>
+<p><strong>快恢复</strong></p>
+<p>与慢开始不同的是，发生拥塞后，把ssthresh值设置为此时发生方cwnd的一般，然后把cwnd值设置为慢开始门限ssthresh改变后的数值，然后执行拥塞避免（加法增大）算法。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../408_note/计算机网络/CH04-网络层.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../408_note/计算机网络/CH06-应用层.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../408_note/计算机网络/CH04-网络层.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../408_note/计算机网络/CH06-应用层.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
